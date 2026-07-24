@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New York — Il giro del gruppo: dicci la tua</title>
+<style>
+  :root{
+    --bg:#fbf7f0; --card:#fff; --ink:#22303c; --muted:#6b7a88; --line:#e7ddcd;
+    --accent:#1f3b73; --accent2:#e0912f; --g5:#3f9d5a; --red:#d1495b;
+    --g1:#0f8a8a; --g2:#5b6cc9; --g3:#e0912f; --g4:#c9557d;
+    --shadow:0 6px 22px rgba(30,40,60,.10); --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--ink); padding-bottom:98px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px; margin:0 auto; padding:0 18px}
+  h1,h2,h3{line-height:1.2; margin:.2em 0}
+  h2{font-size:1.4rem; margin-top:1.6em}
+  h3{font-size:1.02rem}
+  p{margin:.5em 0}
+  small{color:var(--muted)} .muted{color:var(--muted)}
+
+  .hero{background:linear-gradient(160deg,#5b6cc9 0%,#3a49a0 100%); color:#fff; padding:34px 0 26px; text-align:center}
+  .hero .flag{font-size:2.3rem}
+  .hero h1{font-size:1.5rem; margin:.15em 0}
+  .hero .sub{opacity:.95; font-size:.95rem}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:15px 17px; margin:13px 0}
+  .intro{margin-top:-18px; position:relative}
+
+  .who{background:linear-gradient(135deg,#eef4fb,#fff); border:2px solid var(--accent); border-radius:14px; padding:15px 16px; margin:13px 0}
+  .who h3{margin-top:0; color:var(--accent)}
+
+  .zb{display:inline-block; color:#fff; font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:999px}
+  .b1{background:var(--g1)} .b2{background:var(--g2)} .b3{background:var(--g3)} .b4{background:var(--g4)} .b5{background:var(--g5)}
+
+  .princ{display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px dashed var(--line); font-size:.9rem}
+  .princ:last-child{border-bottom:none}
+  .princ .ic{font-size:1.2rem}
+
+  .zone{display:flex; gap:9px; align-items:baseline; font-size:.9rem; padding:5px 0}
+  .zone .zt{font-weight:700}
+
+  .day{border:1px solid var(--line); border-radius:13px; padding:12px 13px; margin:11px 0; background:#fff}
+  .day .dh{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+  .day .dd{font-weight:800; font-size:.96rem}
+  .sk{font-size:.87rem; margin:3px 0 6px}
+  .sk .lock{color:var(--muted); font-size:.76rem; font-weight:700}
+  .ex{font-size:.83rem; color:#7a6a4d}
+
+  .fb{background:linear-gradient(135deg,#fff,#fbf4e8); border:1px dashed var(--accent2); border-radius:14px; padding:14px 16px; margin:12px 0}
+  .fb.blue{background:linear-gradient(135deg,#eef4fb,#fff); border-color:var(--accent)}
+  .fb.green{background:linear-gradient(135deg,#f0f9f2,#fff); border-color:var(--g5)}
+  .fb .q{font-weight:700; margin-bottom:8px}
+  .chips{display:flex; gap:8px; flex-wrap:wrap}
+  .chip{border:1.5px solid var(--line); background:#fff; color:var(--ink); padding:8px 13px; border-radius:999px; font-size:.88rem; cursor:pointer; transition:all .15s; user-select:none}
+  .chip:hover{border-color:var(--accent2)}
+  .chip.sel{background:var(--accent2); border-color:var(--accent2); color:#fff}
+  .chip.who-c.sel{background:var(--accent); border-color:var(--accent)}
+  .txtin, textarea{width:100%; border:1.5px solid var(--line); border-radius:12px; padding:11px; font-family:inherit; font-size:.94rem; background:#fff; color:var(--ink)}
+  textarea{resize:vertical; min-height:64px; margin-top:9px} .txtin{margin-top:10px}
+
+  .bar{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--line); box-shadow:0 -6px 20px rgba(30,40,60,.10); padding:10px 14px; z-index:50}
+  .bar .in{max-width:660px; margin:0 auto; display:flex; align-items:center; gap:12px}
+  .bar .status{flex:1; font-size:.84rem}
+  .send{background:#25D366; color:#fff; border:none; border-radius:12px; padding:12px 16px; font-weight:800; font-size:.95rem; cursor:pointer; white-space:nowrap}
+  .send:active{transform:translateY(1px)}
+  .footer{text-align:center; padding:22px 0 6px; font-size:.82rem; color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="flag">🗽👥</div>
+    <h1>New York — il giro del gruppo</h1>
+    <div class="sub">Fabrizio ha dato l'OK a una prima versione costruita sui vostri questionari. Ora tocca a voi: <b>guardatela e ditemi cosa cambiereste</b>.</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- WHO ARE YOU (required, links feedback to person) -->
+  <div class="who">
+    <h3>👤 Chi sei?</h3>
+    <p class="muted" style="margin:2px 0 8px">Serve per legare i tuoi suggerimenti a te (se qualcuno vuole cose diverse, organizzo dei "rami" del giro).</p>
+    <div class="chips" data-group="who">
+      <div class="chip who-c" data-val="MariaPaola">MariaPaola</div>
+      <div class="chip who-c" data-val="Tony">Tony</div>
+      <div class="chip who-c" data-val="Barbara">Barbara</div>
+    </div>
+    <input class="txtin" id="whoOther" placeholder="...oppure scrivi il tuo nome">
+  </div>
+
+  <!-- HOW IT WAS BUILT -->
+  <h2>🧭 Come è stato costruito il giro</h2>
+  <div class="card">
+    <div class="princ"><span class="ic">🗺️</span><div><b>Un quartiere al giorno (per zone).</b> Ogni giornata sta in una zona, così si cammina dentro un quartiere invece di attraversare la città (e col caldo si sente).</div></div>
+    <div class="princ"><span class="ic">📋</span><div><b>Costruito sui vostri questionari.</b> Ho preso il "must-do" di ognuno e le cose che vi accomunano (skyline per tutti, Ponte di Brooklyn, shopping, luoghi di film, cibo) e le ho incastrate nella zona giusta.</div></div>
+    <div class="princ"><span class="ic">🔥</span><div><b>Ritmo anti-caldo.</b> Outdoor la mattina presto · musei/AC a mezzogiorno · skyline e passeggiate la sera. Con soste gelato + aria condizionata messe apposta.</div></div>
+    <div class="princ"><span class="ic">🎟️</span><div><b>Biglietti già presi</b> (Go City: bici, Big Bus 2 giorni, Empire · Summit · MoMA) — quelli sono fissi.</div></div>
+  </div>
+
+  <!-- BIG PICTURE -->
+  <h2>🔭 Il giro a grandi linee</h2>
+  <div class="card">
+    <div class="zone"><span class="zb b1">G1</span><div><span class="zt">Financial District &amp; Porto</span> — Statua (traghetto), Wall St, 9/11, Oculus, Chinatown</div></div>
+    <div class="zone"><span class="zb b2">G2</span><div><span class="zt">Downtown &amp; Brooklyn</span> — Ponte di Brooklyn, Dumbo, SoHo, Tribeca</div></div>
+    <div class="zone"><span class="zb b3">G3</span><div><span class="zt">Midtown</span> (hotel) — Times Square, 5th Ave, MoMA, Summit, Empire</div></div>
+    <div class="zone"><span class="zb b4">G4</span><div><span class="zt">West Side</span> — High Line, Chelsea Market, Little Island, Vessel</div></div>
+    <div class="zone"><span class="zb b5">G5</span><div><span class="zt">Central Park &amp; Uptown</span> — bici a Central Park, Upper East Side</div></div>
+    <p class="muted" style="margin:10px 0 0; font-size:.86rem">6 giorni: gio arrivo (Midtown) · ven Midtown+Summit · sab Uptown+bici · dom Brooklyn · lun Downtown→West Side · mar Empire+Vessel e partenza.</p>
+  </div>
+
+  <!-- DETAIL -->
+  <h2>📅 Il programma in dettaglio</h2>
+  <p class="muted" style="margin-top:0">🔒 = scheletro (la struttura per zona) · sotto le <b>tappe di interesse</b> (cibo, film, shopping).</p>
+
+  <div class="day"><div class="dh"><span class="dd">Gio 13</span><span class="zb b3">Midtown</span><span class="muted">arrivo</span></div>
+    <div class="sk"><span class="lock">🔒</span> Times Square di notte + cena</div>
+    <div class="ex">+ Joe's Pizza · Midtown Comics · gelato</div></div>
+
+  <div class="day"><div class="dh"><span class="dd">Ven 14</span><span class="zb b3">Midtown</span></div>
+    <div class="sk"><span class="lock">🔒</span> Grand Central · Bryant Park · 5th Ave · ❄️ MoMA · 🌃 <b>Summit 19:00 (tramonto)</b></div>
+    <div class="ex">+ Lego · NBA Store · NikeTown · Sephora · Raising Cane's</div></div>
+
+  <div class="day"><div class="dh"><span class="dd">Sab 15</span><span class="zb b5">Uptown</span><span class="muted">🚌 Bus g.1</span></div>
+    <div class="sk"><span class="lock">🔒</span> 🚲 Bici Central Park · ❄️ shopping/AC · Upper East Side</div>
+    <div class="ex">+ Met steps (Gossip Girl) · Marc Jacobs · Alo</div></div>
+
+  <div class="day"><div class="dh"><span class="dd">Dom 16</span><span class="zb b2">Brooklyn</span><span class="muted">🚌 Bus g.2</span></div>
+    <div class="sk"><span class="lock">🔒</span> 🌅 Ponte di Brooklyn (alba) · Dumbo · Manhattan Bridge · ❄️ SoHo/Tribeca · 🌃 cena + passeggiata</div>
+    <div class="ex">+ Ghostbusters HQ · foto al molo · shopping SoHo</div></div>
+
+  <div class="day"><div class="dh"><span class="dd">Lun 17</span><span class="zb b1">FiDi</span><span class="zb b4">West Side</span></div>
+    <div class="sk"><span class="lock">🔒</span> 🌅 Traghetto Statua + Wall St · ❄️ 9/11 + Oculus · 🥟 Chinatown · 🌇 Chelsea Market → High Line → Little Island (tramonto)</div>
+    <div class="ex">+ Katz's pastrami · Sanctum Sanctorum · Sex and the City · Eataly</div></div>
+
+  <div class="day"><div class="dh"><span class="dd">Mar 18</span><span class="zb b3">Midtown</span><span class="zb b4">West Side</span><span class="muted">partenza</span></div>
+    <div class="sk"><span class="lock">🔒</span> 🏙️ Empire di giorno (mattina) · 🌀 Vessel + Hudson Yards · ultimi acquisti → aeroporto</div>
+    <div class="ex">+ All'Antico Vinaio · Junior's</div></div>
+
+  <!-- FEEDBACK 1: skeleton -->
+  <h2>🧱 Cambieresti la struttura (scheletro)?</h2>
+  <div class="fb blue">
+    <div class="q">Ordine dei giorni, zone, ritmo, tappe fisse. Se cambieresti qualcosa di <b>strutturale</b>, dimmelo.</div>
+    <div class="chips" data-group="skmod">
+      <div class="chip" data-val="ordine dei giorni">Ordine dei giorni</div>
+      <div class="chip" data-val="zona di un giorno">Zona di un giorno</div>
+      <div class="chip" data-val="ritmo/orari">Ritmo/orari</div>
+      <div class="chip" data-val="va bene così">Va bene così</div>
+    </div>
+    <input class="txtin" id="skTxt" placeholder="Cosa cambieresti nella struttura?">
+  </div>
+
+  <!-- FEEDBACK 2: places -->
+  <h2>📍 Cambieresti i luoghi / le tappe?</h2>
+  <div class="fb">
+    <div class="q">Ristoranti, negozi, tappe di interesse: c'è qualcosa che <b>toglieresti, sostituiresti o aggiungeresti</b>? (dimmi anche in quale giorno)</div>
+    <textarea id="placesTxt" placeholder="Es. 'martedì al posto di Junior's preferirei...', 'aggiungerei un negozio di...'"></textarea>
+  </div>
+
+  <!-- FEEDBACK 3: not planned -->
+  <h2>✨ Qualcosa che non è previsto?</h2>
+  <div class="fb green">
+    <div class="q">Un posto, un'esperienza, un cibo che ti piacerebbe e <b>non c'è ancora</b>? Buttalo qui, anche se non sai dove metterlo.</div>
+    <textarea id="newTxt" placeholder="Cosa vorresti aggiungere di nuovo..."></textarea>
+  </div>
+
+  <!-- FREE -->
+  <h2>💬 Altro da dirmi?</h2>
+  <div class="card"><textarea id="openText" placeholder="Spazio libero..."></textarea></div>
+
+  <div class="footer">
+    Survey itinerario · la compagnia · New York 13–18 ago 2026<br>
+    Il feedback arriva su WhatsApp 💚
+  </div>
+</div>
+
+<div class="bar">
+  <div class="in">
+    <div class="status" id="statusLine">Prima dimmi chi sei 👆</div>
+    <button class="send" id="sendBtn">📲 Invia su WhatsApp</button>
+  </div>
+</div>
+
+<script>
+  let who = '';
+  const whoGroup = document.querySelector('[data-group="who"]');
+  whoGroup.querySelectorAll('.chip').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const already = el.classList.contains('sel');
+      whoGroup.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
+      who = already ? '' : el.getAttribute('data-val');
+      if(!already){ el.classList.add('sel'); document.getElementById('whoOther').value=''; }
+      updateStatus();
+    });
+  });
+  document.getElementById('whoOther').addEventListener('input', ()=>{
+    if(document.getElementById('whoOther').value.trim()){
+      whoGroup.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
+      who='';
+    }
+    updateStatus();
+  });
+
+  const state = { skmod:'' };
+  document.querySelectorAll('[data-group="skmod"]').forEach(group=>{
+    group.querySelectorAll('.chip').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const already = el.classList.contains('sel');
+        group.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
+        state.skmod = already ? '' : el.getAttribute('data-val');
+        if(!already) el.classList.add('sel');
+      });
+    });
+  });
+
+  function val(id){ const el=document.getElementById(id); return el ? el.value.trim() : ''; }
+  function whoName(){ return who || val('whoOther') || ''; }
+  function updateStatus(){
+    document.getElementById('statusLine').textContent = whoName() ? ('Ciao '+whoName()+' — quando vuoi, invia') : 'Prima dimmi chi sei 👆';
+  }
+
+  function buildMessage(){
+    const name = whoName() || '(anonimo)';
+    const L = [];
+    L.push('🗽 NEW YORK — Feedback itinerario');
+    L.push('👤 Da: ' + name);
+    L.push('');
+    L.push('🧱 Struttura: ' + (state.skmod || '—') + (val('skTxt') ? ' — '+val('skTxt') : ''));
+    L.push('');
+    L.push('📍 Luoghi/tappe: ' + (val('placesTxt') || '—'));
+    L.push('');
+    L.push('✨ Da aggiungere (non previsto): ' + (val('newTxt') || '—'));
+    const open = val('openText');
+    if(open){ L.push(''); L.push('💬 Altro: ' + open); }
+    L.push('');
+    L.push('[' + name + ' · survey-gruppo]');
+    return L.join('\n');
+  }
+
+  document.getElementById('sendBtn').addEventListener('click', ()=>{
+    if(!whoName()){ document.getElementById('statusLine').textContent='👆 Dimmi prima chi sei'; window.scrollTo({top:0,behavior:'smooth'}); return; }
+    const url = 'https://wa.me/?text=' + encodeURIComponent(buildMessage());
+    window.open(url, '_blank');
+  });
+</script>
+</body>
+</html>
