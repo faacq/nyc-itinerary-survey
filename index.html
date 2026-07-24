@@ -47,9 +47,11 @@
   .day{border:1px solid var(--line); border-radius:13px; padding:12px 13px; margin:11px 0; background:#fff}
   .day .dh{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
   .day .dd{font-weight:800; font-size:.96rem}
-  .sk{font-size:.87rem; margin:3px 0 6px}
-  .sk .lock{color:var(--muted); font-size:.76rem; font-weight:700}
-  .ex{font-size:.83rem; color:#7a6a4d}
+  .sk{font-size:.87rem; margin:3px 0 8px}
+  .lbl{display:inline-block; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:2px 7px; border-radius:6px; margin-right:6px; vertical-align:middle}
+  .sk .lbl{color:var(--muted); background:#eee}
+  .ex{font-size:.87rem; color:var(--ink); margin-top:7px; padding-top:8px; border-top:1px dashed var(--line)}
+  .ex .lbl{color:#b8720f; background:#fdf1df}
 
   .fb{background:linear-gradient(135deg,#fff,#fbf4e8); border:1px dashed var(--accent2); border-radius:14px; padding:14px 16px; margin:12px 0}
   .fb.blue{background:linear-gradient(135deg,#eef4fb,#fff); border-color:var(--accent)}
@@ -117,31 +119,31 @@
 
   <!-- DETAIL -->
   <h2>📅 Il programma in dettaglio</h2>
-  <p class="muted" style="margin-top:0">🔒 = scheletro (la struttura per zona) · sotto le <b>tappe di interesse</b> (cibo, film, shopping).</p>
+  <p class="muted" style="margin-top:0">Ogni giorno ha due parti: <b>🔒 Scheletro</b> (la struttura fissa per zona) e <b>📍 Da vedere</b> (i <b>punti di interesse</b> — cibo, film, shopping, foto). I vostri suggerimenti valgono su entrambi.</p>
 
   <div class="day"><div class="dh"><span class="dd">Gio 13</span><span class="zb b3">Midtown</span><span class="muted">arrivo</span></div>
-    <div class="sk"><span class="lock">🔒</span> Times Square di notte + cena</div>
-    <div class="ex">+ Joe's Pizza · Midtown Comics · gelato</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> Times Square di notte + cena</div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>Joe's Pizza · Midtown Comics · gelato</div></div>
 
   <div class="day"><div class="dh"><span class="dd">Ven 14</span><span class="zb b3">Midtown</span></div>
-    <div class="sk"><span class="lock">🔒</span> Grand Central · Bryant Park · 5th Ave · ❄️ MoMA · 🌃 <b>Summit 19:00 (tramonto)</b></div>
-    <div class="ex">+ Lego · NBA Store · NikeTown · Sephora · Raising Cane's</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> Grand Central · Bryant Park · 5th Ave · ❄️ MoMA · 🌃 <b>Summit 19:00 (tramonto)</b></div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>Lego · NBA Store · NikeTown · Sephora · Raising Cane's</div></div>
 
   <div class="day"><div class="dh"><span class="dd">Sab 15</span><span class="zb b5">Uptown</span><span class="muted">🚌 Bus g.1</span></div>
-    <div class="sk"><span class="lock">🔒</span> 🚲 Bici Central Park · ❄️ shopping/AC · Upper East Side</div>
-    <div class="ex">+ Met steps (Gossip Girl) · Marc Jacobs · Alo</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> 🚲 Bici Central Park · ❄️ shopping/AC · Upper East Side</div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>Met steps (Gossip Girl) · Marc Jacobs · Alo</div></div>
 
   <div class="day"><div class="dh"><span class="dd">Dom 16</span><span class="zb b2">Brooklyn</span><span class="muted">🚌 Bus g.2</span></div>
-    <div class="sk"><span class="lock">🔒</span> 🌅 Ponte di Brooklyn (alba) · Dumbo · Manhattan Bridge · ❄️ SoHo/Tribeca · 🌃 cena + passeggiata</div>
-    <div class="ex">+ Ghostbusters HQ · foto al molo · shopping SoHo</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> 🌅 Ponte di Brooklyn (alba) · Dumbo · Manhattan Bridge · ❄️ SoHo/Tribeca · 🌃 cena + passeggiata</div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>Ghostbusters HQ · foto al molo · shopping SoHo</div></div>
 
   <div class="day"><div class="dh"><span class="dd">Lun 17</span><span class="zb b1">FiDi</span><span class="zb b4">West Side</span></div>
-    <div class="sk"><span class="lock">🔒</span> 🌅 Traghetto Statua + Wall St · ❄️ 9/11 + Oculus · 🥟 Chinatown · 🌇 Chelsea Market → High Line → Little Island (tramonto)</div>
-    <div class="ex">+ Katz's pastrami · Sanctum Sanctorum · Sex and the City · Eataly</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> 🌅 Traghetto Statua + Wall St · ❄️ 9/11 + Oculus · 🥟 Chinatown · 🌇 Chelsea Market → High Line → Little Island (tramonto)</div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>Katz's pastrami · Sanctum Sanctorum · Sex and the City · Eataly</div></div>
 
   <div class="day"><div class="dh"><span class="dd">Mar 18</span><span class="zb b3">Midtown</span><span class="zb b4">West Side</span><span class="muted">partenza</span></div>
-    <div class="sk"><span class="lock">🔒</span> 🏙️ Empire di giorno (mattina) · 🌀 Vessel + Hudson Yards · ultimi acquisti → aeroporto</div>
-    <div class="ex">+ All'Antico Vinaio · Junior's</div></div>
+    <div class="sk"><span class="lbl">🔒 Scheletro</span> 🏙️ Empire di giorno (mattina) · 🌀 Vessel + Hudson Yards · ultimi acquisti → aeroporto</div>
+    <div class="ex"><span class="lbl">📍 Da vedere</span>All'Antico Vinaio · Junior's</div></div>
 
   <!-- FEEDBACK 1: skeleton -->
   <h2>🧱 Cambieresti la struttura (scheletro)?</h2>
