@@ -44,6 +44,9 @@
   .mapwrap{width:100%; overflow-x:auto}
   svg.map{display:block; width:100%; max-width:330px; height:auto; margin:0 auto}
   .maplegend{font-size:.8rem; color:var(--muted); text-align:center; margin-top:6px}
+  .mlegend{margin-top:12px}
+  .lg{display:flex; gap:9px; align-items:flex-start; font-size:.82rem; padding:3px 0}
+  .lg .sw{flex:0 0 auto; width:13px; height:13px; border-radius:3px; margin-top:3px}
 
   .zone{display:flex; gap:9px; align-items:baseline; font-size:.9rem; padding:5px 0}
   .zone .zt{font-weight:700}
@@ -51,14 +54,22 @@
   .day{border:1px solid var(--line); border-radius:13px; padding:12px 13px; margin:11px 0; background:#fff}
   .day .dh{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px}
   .day .dd{font-weight:800; font-size:.96rem}
-  .grp{margin-top:8px}
-  .glbl{font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); margin-bottom:5px}
-  .pills{display:flex; flex-wrap:wrap; gap:6px}
-  .it{border:1.5px solid var(--line); background:#fff; border-radius:999px; padding:6px 11px; font-size:.83rem; cursor:pointer; user-select:none; transition:all .12s}
-  .it.int{background:#fdf7ef; border-color:#f0d9a8}
-  .it:hover{border-color:var(--red)}
-  .it.off{background:#fbe9ec; border-color:var(--red); color:#b23a5b; text-decoration:line-through; opacity:.8}
-  .daycomment{width:100%; margin-top:10px; border:1.5px solid var(--line); border-radius:10px; padding:9px; font-family:inherit; font-size:.88rem; min-height:42px; resize:vertical; background:#fff; color:var(--ink)}
+  .editbtn{margin-left:auto; border:1.5px solid var(--accent); background:#fff; color:var(--accent); border-radius:999px; padding:5px 12px; font-size:.8rem; font-weight:700; cursor:pointer; white-space:nowrap}
+  .day.editing .editbtn{background:var(--accent); color:#fff}
+  .seq{position:relative; margin-top:9px; padding-left:15px}
+  .seq::before{content:""; position:absolute; left:4px; top:9px; bottom:9px; width:2px; background:var(--line); border-radius:2px}
+  .it{position:relative; display:block; background:#fff; border:1px solid transparent; border-radius:9px; padding:6px 9px; margin:4px 0; font-size:.87rem; transition:all .12s}
+  .it::before{content:""; position:absolute; left:-11.5px; top:12px; width:8px; height:8px; border-radius:50%; background:#cbb892; border:2px solid #fff}
+  .it.int::before{background:var(--accent2)}
+  .it .t{margin-right:5px}
+  .it.int{color:#6b5a3f}
+  .day.editing .it{cursor:pointer; border-color:var(--line)}
+  .day.editing .it:hover{border-color:var(--red)}
+  .it.off{background:#fbe9ec; border-color:var(--red)!important; color:#b23a5b; text-decoration:line-through; opacity:.85}
+  .edithint{display:none; font-size:.8rem; color:#b23a5b; margin:8px 0 0; font-weight:600}
+  .day.editing .edithint{display:block}
+  .daycomment{display:none; width:100%; margin-top:9px; border:1.5px solid var(--line); border-radius:10px; padding:9px; font-family:inherit; font-size:.88rem; min-height:42px; resize:vertical; background:#fff; color:var(--ink)}
+  .day.editing .daycomment{display:block}
 
   .nextstep{background:linear-gradient(135deg,#eef4fb,#fff); border:1px solid #cfe0f2; border-left:5px solid var(--accent); border-radius:12px; padding:13px 15px; margin:13px 0; font-size:.9rem}
   .nextstep h3{margin-top:0}
@@ -128,138 +139,153 @@
 
   <!-- MAP -->
   <h2>🗺️ La città a zone</h2>
-  <p class="muted" style="margin-top:0">Dove dormiamo (🏨) e dove stanno le attrazioni "scheletro", divise per zona (i colori tornano sotto, giorno per giorno).</p>
+  <p class="muted" style="margin-top:0">La forma vera: l'isola di <b>Manhattan</b> tra i due fiumi, <b>Brooklyn/Queens</b> a destra e <b>New Jersey</b> a sinistra. I colori sono le <b>5 zone</b> del giro; 🏨 = dove dormiamo.</p>
   <div class="card">
     <div class="mapwrap">
-      <svg class="map" viewBox="0 0 330 470" role="img" aria-label="Mappa schematica di New York divisa in 5 zone colorate">
-        <rect x="0" y="0" width="330" height="470" fill="#dbeafe"/>
-        <text x="128" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#334">🏙️ MANHATTAN</text>
-        <!-- G5 -->
-        <rect x="40" y="28" width="176" height="66" rx="9" fill="#3f9d5a"/>
-        <text x="128" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">G5 · Central Park &amp; Uptown</text>
-        <text x="128" y="70" text-anchor="middle" font-size="8.5" fill="#eafaef">🚲 Central Park · Upper East Side</text>
-        <!-- G3 Midtown -->
-        <rect x="40" y="100" width="176" height="66" rx="9" fill="#e0912f"/>
-        <text x="128" y="123" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">G3 · Midtown</text>
-        <text x="128" y="141" text-anchor="middle" font-size="8.5" fill="#fff3e2">🏨 Hotel · Summit · Empire · MoMA</text>
-        <text x="128" y="157" text-anchor="middle" font-size="8.5" fill="#fff3e2">Times Square · 5th Ave</text>
-        <!-- G4 West Side -->
-        <rect x="40" y="172" width="176" height="60" rx="9" fill="#c9557d"/>
-        <text x="128" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">G4 · West Side <tspan font-size="8">(lato fiume ⬅)</tspan></text>
-        <text x="128" y="212" text-anchor="middle" font-size="8.5" fill="#fbe6ee">High Line · Vessel · Little Island · Chelsea Mkt</text>
-        <!-- G2 Downtown -->
-        <rect x="40" y="238" width="176" height="58" rx="9" fill="#5b6cc9"/>
-        <text x="128" y="261" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">G2 · Downtown</text>
-        <text x="128" y="279" text-anchor="middle" font-size="8.5" fill="#e7eafb">SoHo · Tribeca</text>
-        <!-- G1 FiDi -->
-        <rect x="60" y="302" width="136" height="60" rx="9" fill="#0f8a8a"/>
-        <text x="128" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">G1 · FiDi &amp; Porto</text>
-        <text x="128" y="343" text-anchor="middle" font-size="8.5" fill="#e2f5f5">Statua · Wall St · 9/11 · Oculus</text>
+      <svg class="map" viewBox="0 0 330 470" role="img" aria-label="Mappa di New York: Manhattan divisa in 5 zone colorate, con Brooklyn, Queens e New Jersey">
+        <rect x="0" y="0" width="330" height="470" fill="#cfe4f5"/>
+        <!-- New Jersey -->
+        <path d="M-10,-10 L96,-10 C90,110 82,240 94,380 C88,430 90,470 84,490 L-10,490 Z" fill="#e7dfcc"/>
+        <text transform="rotate(-90 40 245)" x="40" y="245" text-anchor="middle" font-size="9" fill="#a89a7d">New Jersey</text>
+        <!-- Queens -->
+        <path d="M212,150 C255,138 320,142 340,158 L340,292 C305,300 250,296 220,286 C206,252 204,182 212,150 Z" fill="#e7dfcc"/>
+        <text x="284" y="216" text-anchor="middle" font-size="9" fill="#a89a7d">Queens</text>
         <!-- Brooklyn -->
-        <rect x="228" y="250" width="94" height="92" rx="9" fill="#8b97d9"/>
-        <text x="275" y="288" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff">Brooklyn</text>
-        <text x="275" y="305" text-anchor="middle" font-size="8" fill="#eef0fb">Ponte di</text>
-        <text x="275" y="316" text-anchor="middle" font-size="8" fill="#eef0fb">Brooklyn · Dumbo</text>
-        <!-- bridge link -->
-        <line x1="216" y1="290" x2="228" y2="296" stroke="#8a7a5a" stroke-width="4" stroke-linecap="round"/>
-        <!-- hotel star -->
-        <text x="55" y="132" font-size="15">🏨</text>
+        <path d="M206,300 C245,294 305,306 340,322 L340,490 L196,490 C192,432 188,360 206,300 Z" fill="#e7dfcc"/>
+        <text x="272" y="418" text-anchor="middle" font-size="10" font-weight="700" fill="#8a7c5e">Brooklyn</text>
+        <!-- rivers -->
+        <text transform="rotate(-90 101 235)" x="101" y="235" text-anchor="middle" font-size="8" fill="#7ba0c4">Hudson R.</text>
+        <text transform="rotate(-90 197 250)" x="197" y="250" text-anchor="middle" font-size="7.5" fill="#7ba0c4">East R.</text>
+        <!-- Manhattan zones (clipped to island) -->
+        <clipPath id="mh"><path d="M150,34 C140,80 124,135 120,190 C116,232 123,283 137,323 C144,351 151,375 157,398 C169,373 179,331 183,282 C186,235 180,181 174,134 C170,92 160,60 157,34 Z"/></clipPath>
+        <g clip-path="url(#mh)">
+          <rect x="105" y="28" width="92" height="120" fill="#3f9d5a"/>
+          <rect x="105" y="148" width="47" height="172" fill="#c9557d"/>
+          <rect x="152" y="148" width="62" height="84" fill="#e0912f"/>
+          <rect x="152" y="232" width="62" height="88" fill="#5b6cc9"/>
+          <rect x="105" y="320" width="110" height="115" fill="#0f8a8a"/>
+        </g>
+        <!-- Central Park -->
+        <rect x="137" y="64" width="21" height="52" rx="2" fill="#2e7d46" stroke="#1c5230" stroke-width="1"/>
+        <text transform="rotate(-90 147 90)" x="147" y="90" text-anchor="middle" font-size="6.5" fill="#eafaef">Central Park</text>
+        <!-- Manhattan outline -->
+        <path d="M150,34 C140,80 124,135 120,190 C116,232 123,283 137,323 C144,351 151,375 157,398 C169,373 179,331 183,282 C186,235 180,181 174,134 C170,92 160,60 157,34 Z" fill="none" stroke="#37506a" stroke-width="1.4"/>
+        <!-- bridges to Brooklyn -->
+        <line x1="181" y1="286" x2="212" y2="296" stroke="#6b5b3a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="180" y1="300" x2="210" y2="312" stroke="#6b5b3a" stroke-width="3" stroke-linecap="round"/>
+        <!-- hotel + statue -->
+        <text x="159" y="193" font-size="13" text-anchor="middle">🏨</text>
+        <text x="120" y="430" font-size="12" text-anchor="middle">🗽</text>
+        <!-- title + compass -->
+        <text x="150" y="15" text-anchor="middle" font-size="10" font-weight="700" fill="#37506a">New York</text>
+        <text x="20" y="24" font-size="9" fill="#556">N ↑</text>
       </svg>
     </div>
-    <div class="maplegend">Nord in alto · Brooklyn a destra, oltre il ponte</div>
+    <div class="mlegend">
+      <div class="lg"><span class="sw" style="background:#0f8a8a"></span><div><b>G1 · FiDi &amp; Porto</b> — Statua, Wall St, 9/11, Oculus, Chinatown</div></div>
+      <div class="lg"><span class="sw" style="background:#5b6cc9"></span><div><b>G2 · Downtown &amp; Brooklyn</b> — Ponte di Brooklyn, Dumbo, SoHo, Tribeca</div></div>
+      <div class="lg"><span class="sw" style="background:#e0912f"></span><div><b>G3 · Midtown</b> (🏨 hotel) — Times Sq, 5th Ave, MoMA, Summit, Empire</div></div>
+      <div class="lg"><span class="sw" style="background:#c9557d"></span><div><b>G4 · West Side</b> — High Line, Vessel, Little Island, Chelsea Mkt</div></div>
+      <div class="lg"><span class="sw" style="background:#3f9d5a"></span><div><b>G5 · Central Park &amp; Uptown</b> — Central Park (bici), Upper East Side</div></div>
+    </div>
   </div>
 
   <!-- DETAIL, interactive -->
   <h2>📅 Il piano, giorno per giorno</h2>
-  <p class="muted" style="margin-top:0"><b>Qui puoi intervenire:</b> tocca una tappa — 🔒 scheletro o 📍 da vedere — per <b>proporre di toglierla</b> (si barra). E scrivi un <b>commento/suggerimento</b> per ogni giorno. Le icone dei punti di interesse indicano il tipo (🍽️ cibo · 🛍️ shopping · 🎬 film · 📸 foto · 🎤 esperienza).</p>
+  <p class="muted" style="margin-top:0">Questo è l'<b>itinerario proposto</b>, in ordine <b>dalla mattina alla sera</b>. Per cambiarlo, tocca <b>✏️ Modifica</b> sul giorno: barri le tappe da togliere e lasci un commento. Le icone indicano il tipo (🍽️ cibo · 🛍️ shopping · 🎬 film · 📸 foto · 🎤 esperienza); il pallino <b style="color:#e0912f">arancione</b> = punto di interesse.</p>
 
   <div class="day" data-dayname="Gio 13 - Midtown (arrivo)">
-    <div class="dh"><span class="dd">Gio 13</span><span class="zb b3">Midtown</span><span class="muted">arrivo</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Times Square di notte">Times Square di notte</span>
-      <span class="it" data-name="cena">cena</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="Ellen's Stardust (cena)">🎤 Ellen's Stardust (cena)</span>
-      <span class="it int" data-name="Midtown Comics">🧩 Midtown Comics</span>
-      <span class="it int" data-name="gelato">🍦 gelato</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per giovedì..."></textarea>
+    <div class="dh"><span class="dd">Gio 13</span><span class="zb b3">Midtown</span><span class="muted">arrivo</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Times Square di notte"><span class="t">🌃</span>Times Square di notte</div>
+      <div class="it int" data-name="Ellen's Stardust (cena)"><span class="t">🎤</span>Cena di benvenuto: Ellen's Stardust</div>
+      <div class="it int" data-name="Midtown Comics"><span class="t">🧩</span>Midtown Comics (dopo cena)</div>
+      <div class="it int" data-name="gelato"><span class="t">🍦</span>gelato</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per giovedì..."></textarea>
   </div>
 
   <div class="day" data-dayname="Ven 14 - Midtown">
-    <div class="dh"><span class="dd">Ven 14</span><span class="zb b3">Midtown</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Grand Central">Grand Central</span>
-      <span class="it" data-name="Bryant Park">Bryant Park</span>
-      <span class="it" data-name="5th Ave">5th Ave</span>
-      <span class="it" data-name="MoMA">❄️ MoMA</span>
-      <span class="it" data-name="Summit 19:00">🌃 Summit 19:00</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="Lego">🧸 Lego</span>
-      <span class="it int" data-name="NBA Store">🏀 NBA Store</span>
-      <span class="it int" data-name="NikeTown">👟 NikeTown</span>
-      <span class="it int" data-name="Sephora">💄 Sephora</span>
-      <span class="it int" data-name="Raising Cane's">🍗 Raising Cane's</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per venerdì..."></textarea>
+    <div class="dh"><span class="dd">Ven 14</span><span class="zb b3">Midtown</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Grand Central"><span class="t">🚉</span>Grand Central (mattina)</div>
+      <div class="it" data-name="Bryant Park"><span class="t">🌳</span>Bryant Park</div>
+      <div class="it" data-name="5th Ave"><span class="t">🛍️</span>5th Avenue</div>
+      <div class="it int" data-name="Lego"><span class="t">🧸</span>Lego Store</div>
+      <div class="it int" data-name="NBA Store"><span class="t">🏀</span>NBA Store</div>
+      <div class="it int" data-name="NikeTown"><span class="t">👟</span>NikeTown</div>
+      <div class="it int" data-name="Sephora"><span class="t">💄</span>Sephora</div>
+      <div class="it int" data-name="Raising Cane's"><span class="t">🍗</span>Raising Cane's (pranzo)</div>
+      <div class="it" data-name="MoMA"><span class="t">🖼️</span>MoMA (pomeriggio, AC)</div>
+      <div class="it" data-name="Summit 19:00"><span class="t">🌇</span>Summit ore 19:00 (tramonto)</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per venerdì..."></textarea>
   </div>
 
   <div class="day" data-dayname="Sab 15 - Uptown (Bus g.1)">
-    <div class="dh"><span class="dd">Sab 15</span><span class="zb b5">Uptown</span><span class="muted">🚌 Bus g.1</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Bici Central Park">🚲 Bici Central Park</span>
-      <span class="it" data-name="shopping/AC">❄️ shopping/AC</span>
-      <span class="it" data-name="Upper East Side">Upper East Side</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="Met steps (Gossip Girl)">🎬 Met steps (Gossip Girl)</span>
-      <span class="it int" data-name="Marc Jacobs">🛍️ Marc Jacobs</span>
-      <span class="it int" data-name="Alo">🛍️ Alo</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per sabato..."></textarea>
+    <div class="dh"><span class="dd">Sab 15</span><span class="zb b5">Uptown</span><span class="muted">🚌 Bus g.1</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Bici Central Park"><span class="t">🚲</span>Bici a Central Park (mattina)</div>
+      <div class="it" data-name="shopping/AC"><span class="t">❄️</span>Pausa AC + shopping (mezzogiorno)</div>
+      <div class="it" data-name="Upper East Side"><span class="t">🏙️</span>Upper East Side (pomeriggio)</div>
+      <div class="it int" data-name="Met steps (Gossip Girl)"><span class="t">🎬</span>Met steps (Gossip Girl)</div>
+      <div class="it int" data-name="Marc Jacobs"><span class="t">🛍️</span>Marc Jacobs</div>
+      <div class="it int" data-name="Alo"><span class="t">🛍️</span>Alo</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per sabato..."></textarea>
   </div>
 
   <div class="day" data-dayname="Dom 16 - Brooklyn (Bus g.2)">
-    <div class="dh"><span class="dd">Dom 16</span><span class="zb b2">Brooklyn</span><span class="muted">🚌 Bus g.2</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Ponte di Brooklyn (giorno)">☀️ Ponte di Brooklyn (giorno)</span>
-      <span class="it" data-name="Dumbo">Dumbo</span>
-      <span class="it" data-name="Manhattan Bridge">Manhattan Bridge</span>
-      <span class="it" data-name="SoHo/Tribeca">❄️ SoHo/Tribeca</span>
-      <span class="it" data-name="cena + passeggiata">🌃 cena + passeggiata</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="Ghostbusters HQ">🎬 Ghostbusters HQ</span>
-      <span class="it int" data-name="foto al molo">📸 foto al molo</span>
-      <span class="it int" data-name="shopping SoHo">🛍️ shopping SoHo</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per domenica..."></textarea>
+    <div class="dh"><span class="dd">Dom 16</span><span class="zb b2">Brooklyn</span><span class="muted">🚌 Bus g.2</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Ponte di Brooklyn (giorno)"><span class="t">☀️</span>Ponte di Brooklyn di giorno (mattina)</div>
+      <div class="it" data-name="Dumbo"><span class="t">📷</span>Dumbo</div>
+      <div class="it" data-name="Manhattan Bridge"><span class="t">🌉</span>Manhattan Bridge</div>
+      <div class="it int" data-name="foto al molo"><span class="t">📸</span>Foto al molo (Brooklyn Bridge Park)</div>
+      <div class="it" data-name="SoHo/Tribeca"><span class="t">🏬</span>SoHo / Tribeca (mezzogiorno, AC)</div>
+      <div class="it int" data-name="Ghostbusters HQ"><span class="t">🎬</span>Ghostbusters HQ</div>
+      <div class="it int" data-name="shopping SoHo"><span class="t">🛍️</span>Shopping SoHo</div>
+      <div class="it" data-name="cena + passeggiata"><span class="t">🌃</span>Cena + passeggiata (sera)</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per domenica..."></textarea>
   </div>
 
   <div class="day" data-dayname="Lun 17 - FiDi + West Side">
-    <div class="dh"><span class="dd">Lun 17</span><span class="zb b1">FiDi</span><span class="zb b4">West Side</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Traghetto Statua">Traghetto Statua</span>
-      <span class="it" data-name="Wall St">Wall St</span>
-      <span class="it" data-name="9/11 + Oculus">9/11 + Oculus</span>
-      <span class="it" data-name="Chinatown">🥟 Chinatown</span>
-      <span class="it" data-name="Chelsea Market">Chelsea Market</span>
-      <span class="it" data-name="High Line">High Line</span>
-      <span class="it" data-name="Little Island (tramonto)">🌇 Little Island (tramonto)</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="Katz's pastrami">🍽️ Katz's pastrami</span>
-      <span class="it int" data-name="Sanctum Sanctorum">🎬 Sanctum Sanctorum</span>
-      <span class="it int" data-name="Joe's Pizza">🍕 Joe's Pizza</span>
-      <span class="it int" data-name="Sex and the City">🎬 Sex and the City</span>
-      <span class="it int" data-name="Eataly">🍽️ Eataly</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per lunedì (è il giorno più pieno)..."></textarea>
+    <div class="dh"><span class="dd">Lun 17</span><span class="zb b1">FiDi</span><span class="zb b4">West Side</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Traghetto Statua"><span class="t">⛴️</span>Traghetto Statua (mattina)</div>
+      <div class="it" data-name="Wall St"><span class="t">🏛️</span>Wall St</div>
+      <div class="it" data-name="9/11 + Oculus"><span class="t">🕊️</span>9/11 Memorial + Oculus</div>
+      <div class="it int" data-name="Eataly"><span class="t">🍝</span>Eataly (pranzo, WTC)</div>
+      <div class="it" data-name="Chinatown"><span class="t">🥟</span>Chinatown / Little Italy</div>
+      <div class="it int" data-name="Katz's pastrami"><span class="t">🥪</span>Katz's pastrami</div>
+      <div class="it int" data-name="Sanctum Sanctorum"><span class="t">🎬</span>Sanctum Sanctorum (West Village)</div>
+      <div class="it int" data-name="Joe's Pizza"><span class="t">🍕</span>Joe's Pizza</div>
+      <div class="it int" data-name="Sex and the City"><span class="t">🎬</span>Sex and the City</div>
+      <div class="it" data-name="Chelsea Market"><span class="t">🏬</span>Chelsea Market</div>
+      <div class="it" data-name="High Line"><span class="t">🌿</span>High Line</div>
+      <div class="it" data-name="Little Island (tramonto)"><span class="t">🌇</span>Little Island (tramonto)</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per lunedì (il giorno più pieno)..."></textarea>
   </div>
 
   <div class="day" data-dayname="Mar 18 - partenza">
-    <div class="dh"><span class="dd">Mar 18</span><span class="zb b3">Midtown</span><span class="zb b4">West Side</span><span class="muted">partenza</span></div>
-    <div class="grp"><div class="glbl">🔒 Scheletro</div><div class="pills">
-      <span class="it" data-name="Empire di giorno">🏙️ Empire di giorno</span>
-      <span class="it" data-name="Vessel + Hudson Yards">🌀 Vessel + Hudson Yards</span>
-      <span class="it" data-name="ultimi acquisti">ultimi acquisti</span>
-      <span class="it" data-name="aeroporto">aeroporto</span></div></div>
-    <div class="grp"><div class="glbl">📍 Da vedere</div><div class="pills">
-      <span class="it int" data-name="All'Antico Vinaio">🥪 All'Antico Vinaio</span>
-      <span class="it int" data-name="Junior's">🍰 Junior's</span></div></div>
-    <textarea class="daycomment" placeholder="💬 Commento o suggerimento per martedì..."></textarea>
+    <div class="dh"><span class="dd">Mar 18</span><span class="zb b3">Midtown</span><span class="zb b4">West Side</span><span class="muted">partenza</span><button class="editbtn" type="button">✏️ Modifica</button></div>
+    <div class="seq">
+      <div class="it" data-name="Empire di giorno"><span class="t">🏙️</span>Empire di giorno (mattina presto)</div>
+      <div class="it" data-name="Vessel + Hudson Yards"><span class="t">🌀</span>Vessel + Hudson Yards</div>
+      <div class="it int" data-name="All'Antico Vinaio"><span class="t">🥪</span>All'Antico Vinaio</div>
+      <div class="it int" data-name="Junior's"><span class="t">🍰</span>Junior's (cheesecake)</div>
+      <div class="it" data-name="ultimi acquisti"><span class="t">🛍️</span>Ultimi acquisti 5th Ave</div>
+      <div class="it" data-name="aeroporto"><span class="t">✈️</span>Aeroporto (volo 22:00)</div>
+    </div>
+    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
+    <textarea class="daycomment" placeholder="💬 Suggerimento per martedì..."></textarea>
   </div>
 
   <!-- NEW IDEAS -->
@@ -300,9 +326,21 @@
     });
   });
 
-  // tappable pills (skeleton + interest)
+  // edit mode per day
+  document.querySelectorAll('.editbtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const day = btn.closest('.day');
+      const on = day.classList.toggle('editing');
+      btn.textContent = on ? '✓ Fine' : '✏️ Modifica';
+    });
+  });
+  // tap a stop to flag removal (only in edit mode)
   document.querySelectorAll('.it').forEach(el=>{
-    el.addEventListener('click', ()=> el.classList.toggle('off'));
+    el.addEventListener('click', ()=>{
+      const day = el.closest('.day');
+      if(!day || !day.classList.contains('editing')) return;
+      el.classList.toggle('off');
+    });
   });
 
   function val(id){ const el=document.getElementById(id); return el ? el.value.trim() : ''; }
