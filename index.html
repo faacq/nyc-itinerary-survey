@@ -159,7 +159,7 @@
 
   <!-- MAP -->
   <h2>🗺️ La mappa del giro</h2>
-  <p class="muted" style="margin-top:0">Manhattan tra i due fiumi. Le <b>aree colorate</b> sono le <b>5 zone</b> del giro (nome + giorno). I pallini sono le tappe: <b>pieni</b> = scheletro (must-do), <b>vuoti</b> = punti d'interesse. <b>Tocca un pallino</b> per il nome. 🏨 = dove dormiamo.</p>
+  <p class="muted" style="margin-top:0">Manhattan tra i due fiumi. Le <b>aree colorate</b> sono le <b>5 zone</b> del giro (nome + giorno). I pallini sono le tappe: <b>pieni</b> = scheletro (must-do), <b>vuoti</b> = punti d'interesse. <b>Tocca un pallino</b> per il nome; <b>pizzica con due dita</b> (o i tasti +/-) per zoomare. 🏨 = dove dormiamo.</p>
   <div class="card">
     <div id="map"></div>
     <div class="mk">
@@ -417,6 +417,9 @@
   ];
 
   var map = L.map('map', { scrollWheelZoom:false });
+  // Mobile: niente drag a un dito (cosi la pagina scrolla sopra la mappa);
+  // resta il pinch-zoom a due dita + i pulsanti +/- per zoomare sui pallini fitti.
+  if (L.Browser.mobile) { map.dragging.disable(); }
   L.control.scale({imperial:false}).addTo(map);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     subdomains:'abcd', maxZoom:19,
