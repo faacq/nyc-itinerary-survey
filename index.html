@@ -62,6 +62,10 @@
 
   .nextstep{background:linear-gradient(135deg,#eef4fb,#fff); border:1px solid #cfe0f2; border-left:5px solid var(--accent); border-radius:12px; padding:13px 15px; margin:13px 0; font-size:.9rem}
   .nextstep h3{margin-top:0}
+  .proc{display:flex; gap:11px; align-items:flex-start; padding:6px 0; font-size:.9rem}
+  .proc .pn{flex:0 0 auto; width:23px; height:23px; border-radius:50%; background:var(--line); color:#5a5a5a; font-weight:800; font-size:.8rem; display:flex; align-items:center; justify-content:center}
+  .proc.now .pn{background:var(--accent2); color:#fff}
+  .youare{display:inline-block; background:var(--accent2); color:#fff; font-size:.68rem; font-weight:800; padding:2px 8px; border-radius:999px; margin-left:5px}
   .fb{background:linear-gradient(135deg,#f0f9f2,#fff); border:1px dashed var(--g5); border-radius:14px; padding:14px 16px; margin:12px 0}
   .fb .q{font-weight:700; margin-bottom:8px}
   .chips{display:flex; gap:8px; flex-wrap:wrap}
@@ -110,6 +114,16 @@
     <div class="princ"><span class="ic">🔥</span><div><b>Ritmo anti-caldo.</b> Outdoor la mattina presto · musei/AC a mezzogiorno · skyline e passeggiate la sera. Con soste gelato + aria condizionata.</div></div>
     <div class="princ"><span class="ic">🎟️</span><div><b>Biglietti già presi</b> (Go City: bici, Big Bus 2 giorni, Empire · Summit · MoMA) — quelli sono fissi.</div></div>
     <div class="princ"><span class="ic">🚕</span><div><b>Spostamenti.</b> A piedi dentro ogni quartiere + <b>Big Bus</b> (sab/dom) + <b>taxi/Uber</b> per le tratte più lunghe (usiamo poco la metro).</div></div>
+  </div>
+
+  <!-- PROCESS -->
+  <h2>🔄 Come funziona</h2>
+  <div class="card">
+    <div class="proc"><span class="pn">1</span><div><b>Bozza dell'itinerario</b> — è questa qui. 📝</div></div>
+    <div class="proc now"><span class="pn">2</span><div><b>Raccolgo i vostri feedback e li integro.</b> <span class="youare">👈 siamo qui</span></div></div>
+    <div class="proc"><span class="pn">3</span><div>Definisco il <b>dettaglio dei collegamenti bus</b> e <b>affino i percorsi (route)</b>.</div></div>
+    <div class="proc"><span class="pn">4</span><div><b>Lista delle cose da prenotare.</b> 📋</div></div>
+    <p class="muted" style="margin:11px 0 0">L'itinerario è <b>sempre aperto a modifiche e aggiustamenti</b>: il sistema può <b>proporre percorsi (route) rivisti</b> in base ai feedback che arrivano.</p>
   </div>
 
   <!-- MAP -->
@@ -246,12 +260,6 @@
       <span class="it int" data-name="All'Antico Vinaio">🥪 All'Antico Vinaio</span>
       <span class="it int" data-name="Junior's">🍰 Junior's</span></div></div>
     <textarea class="daycomment" placeholder="💬 Commento o suggerimento per martedì..."></textarea>
-  </div>
-
-  <!-- NEXT STEP -->
-  <div class="nextstep">
-    <h3>➡️ Il prossimo passo</h3>
-    <p style="margin:0">Sto per <b>controllare meglio gli orari dei bus (Big Bus)</b> per capire <b>come usarli al meglio</b> per gli spostamenti — così ottimizzo tempi e tragitti di ogni giornata.</p>
   </div>
 
   <!-- NEW IDEAS -->
