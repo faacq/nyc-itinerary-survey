@@ -85,26 +85,6 @@
   .chip.sel{background:var(--accent); border-color:var(--accent); color:#fff}
   textarea.free{width:100%; border:1.5px solid var(--line); border-radius:12px; padding:11px; font-family:inherit; font-size:.94rem; background:#fff; color:var(--ink); resize:vertical; min-height:60px}
 
-  .note{background:linear-gradient(135deg,#fff7ec,#fff); border:1px solid var(--line); border-left:5px solid var(--accent2); border-radius:12px; padding:12px 15px; margin:13px 0; font-size:.9rem}
-  .note b{color:#b46f1a}
-  .hu{background:linear-gradient(135deg,#fff7ec,#fff); border:1px dashed var(--accent2); border-radius:14px; padding:13px 15px; margin:11px 0}
-  .hu .q{font-weight:800; margin-bottom:3px}
-  .hu .why{font-size:.85rem; color:#6b5a3f; margin:.3em 0 .1em}
-  .hu .chips{margin-top:9px}
-  .newtag{display:inline-block; background:var(--g5); color:#fff; font-size:.62rem; font-weight:800; padding:1px 6px; border-radius:999px; vertical-align:middle; margin-right:4px}
-
-  .bk{background:#fff; border:1px solid var(--line); border-radius:13px; padding:12px 14px; margin:10px 0}
-  .bk.done{background:#f0f9f2; border-color:#bfe6cb}
-  .bk .bkh{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
-  .bk .why{font-size:.85rem; color:var(--muted); margin:.35em 0 0}
-  .bkstat{font-size:.66rem; font-weight:800; padding:2px 8px; border-radius:999px}
-  .bkstat.todo{background:#fdecc8; color:#8a5a12}
-  .bkstat.ok{background:var(--g5); color:#fff}
-  .bkrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
-  .bktoggle{border:1.5px solid var(--g5); color:var(--g5); background:#fff; padding:8px 14px; border-radius:999px; font-size:.88rem; font-weight:700; cursor:pointer; user-select:none}
-  .bktoggle.sel{background:var(--g5); border-color:var(--g5); color:#fff}
-  .bkday,.bktime{border:1.5px solid var(--line); border-radius:9px; padding:8px 10px; font-family:inherit; font-size:.88rem; background:#fff; color:var(--ink); width:118px}
-
   .bar{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--line); box-shadow:0 -6px 20px rgba(30,40,60,.10); padding:10px 14px; z-index:50}
   .bar .in{max-width:660px; margin:0 auto; display:flex; align-items:center; gap:12px}
   .bar .status{flex:1; font-size:.84rem}
@@ -180,10 +160,6 @@
   <!-- MAP -->
   <h2>🗺️ La mappa del giro</h2>
   <p class="muted" style="margin-top:0">Manhattan tra i due fiumi. Le <b>aree colorate</b> sono le <b>5 zone</b> del giro (nome + giorno). I pallini sono le tappe: <b>pieni</b> = scheletro (must-do), <b>vuoti</b> = punti d'interesse. <b>Tocca un pallino</b> per il nome; <b>pizzica con due dita</b> (o i tasti +/-) per zoomare. 🏨 = dove dormiamo.</p>
-
-  <div class="note">
-    <b>🔤 Novità: cambiano i nomi delle zone.</b> Finora le zone erano <b>G1-G5</b> in ordine <i>geografico</i> (da sud a nord), ma i giorni ci saltavano dentro (es. sabato = G5 <i>prima</i> di domenica = G2): confuso. Le rinomineremo in ordine <b>cronologico, per giorno</b> — <b>Giorno 1</b> (gio) ... <b>Giorno 6</b> (mar). La mappa qui sotto usa ancora i vecchi codici G1-G5: cambieranno nella prossima versione. Nel piano ho gia' aggiunto i primi suggerimenti, segnati <span class="newtag">NEW</span>.
-  </div>
   <div class="card">
     <div id="map"></div>
     <div class="mk">
@@ -240,7 +216,6 @@
       <div class="it" data-name="Bici Central Park"><span class="t">🚲</span>Bici a Central Park (mattina)</div>
       <div class="it" data-name="shopping/AC"><span class="t">❄️</span>Pausa AC + shopping (mezzogiorno)</div>
       <div class="it" data-name="Upper East Side"><span class="t">🏙️</span>Upper East Side (pomeriggio)</div>
-      <div class="it" data-name="Roosevelt Island Tramway"><span class="t">🚡</span><span class="newtag">NEW</span>Roosevelt Island Tramway (funivia, vista)</div>
       <div class="it int" data-name="Met steps (Gossip Girl)"><span class="t">🎬</span>Met steps (Gossip Girl)</div>
       <div class="it int" data-name="Marc Jacobs"><span class="t">🛍️</span>Marc Jacobs</div>
       <div class="it int" data-name="Alo"><span class="t">🛍️</span>Alo</div>
@@ -256,7 +231,6 @@
       <div class="it" data-name="Dumbo"><span class="t">📷</span>Dumbo</div>
       <div class="it" data-name="Manhattan Bridge"><span class="t">🌉</span>Manhattan Bridge</div>
       <div class="it int" data-name="foto al molo"><span class="t">📸</span>Foto al molo (Brooklyn Bridge Park)</div>
-      <div class="it" data-name="Time Out Market Dumbo"><span class="t">🍽️</span><span class="newtag">NEW</span>Time Out Market Dumbo (pranzo, vista ponti + AC)</div>
       <div class="it" data-name="SoHo/Tribeca"><span class="t">🏬</span>SoHo / Tribeca (mezzogiorno, AC)</div>
       <div class="it int" data-name="Ghostbusters HQ"><span class="t">🎬</span>Ghostbusters HQ</div>
       <div class="it int" data-name="shopping SoHo"><span class="t">🛍️</span>Shopping SoHo</div>
@@ -300,88 +274,6 @@
     <textarea class="daycomment" placeholder="💬 Suggerimento per martedì..."></textarea>
   </div>
 
-  <!-- HEADS-UP / OPEN QUESTIONS -->
-  <h2>🔎 Punti da chiarire (dai primi feedback)</h2>
-  <p class="muted" style="margin-top:0">Dai primi suggerimenti sono usciti alcuni punti <b>da risolvere prima</b> di metterli nel giro. Toccate la vostra risposta: finisce nel feedback che mi mandate.</p>
-
-  <div class="hu" data-hu="tor" data-label="Top of the Rock vs Empire">
-    <div class="q">🏙️ Top of the Rock al posto dell'Empire?</div>
-    <div class="why">Cambio a <b>costo zero</b> (il pass Go City permette di scegliere Top of the Rock al posto dell'Empire) e di giorno la vista e' migliore: inquadra l'Empire + Central Park. Contro: e' un filo piu' lontano dall'hotel la mattina di partenza.</div>
-    <div class="chips" data-group="tor">
-      <div class="chip" data-val="Sì, Top of the Rock">Sì, Top of the Rock</div>
-      <div class="chip" data-val="No, tengo l'Empire">No, tengo l'Empire</div>
-      <div class="chip" data-val="Indifferente">Indifferente</div>
-    </div>
-  </div>
-
-  <div class="hu" data-hu="guggenheim" data-label="Guggenheim sabato sera">
-    <div class="q">🖼️ Guggenheim il sabato sera (quasi gratis)?</div>
-    <div class="why">Il sabato sera il Guggenheim e' "paga quanto vuoi", ma <b>serve prenotare</b> il posto. Sta sull'Upper East (nel giro di sabato). E' piu' architettura (la spirale famosa) che roba per ragazzi.</div>
-    <div class="chips" data-group="guggenheim">
-      <div class="chip" data-val="Sì, mi va">Sì, mi va</div>
-      <div class="chip" data-val="No, lascio">No, lascio</div>
-      <div class="chip" data-val="Indifferente">Indifferente</div>
-    </div>
-  </div>
-
-  <div class="hu" data-hu="fifth230" data-label="230 Fifth rooftop bar">
-    <div class="q">🍸 230 Fifth (rooftop con vista Empire)?</div>
-    <div class="why">Bella vista, ma <b>e' un bar: la sera e' 21+</b>, quindi coi ragazzi si potrebbe solo <b>di giorno</b>, e nessuna giornata passa da quella zona (Flatiron) - va incastrato apposta.</div>
-    <div class="chips" data-group="fifth230">
-      <div class="chip" data-val="Sì, di giorno">Sì, proviamo di giorno</div>
-      <div class="chip" data-val="Lasciamo stare">Lasciamo stare</div>
-      <div class="chip" data-val="Indifferente">Indifferente</div>
-    </div>
-  </div>
-
-  <div class="hu" data-hu="amnh" data-label="Museo Storia Naturale (AMNH)">
-    <div class="q">🦕 Museo di Storia Naturale (AMNH)?</div>
-    <div class="why"><b>Attenzione:</b> per noi turisti <b>non e' gratis</b> (il "paga quanto vuoi" vale solo per i residenti a NY) - e' biglietto fisso (~28$ adulto / ~16$ ragazzo). Sarebbe un secondo museo a pagamento oltre al MoMA. Lo vogliamo lo stesso?</div>
-    <div class="chips" data-group="amnh">
-      <div class="chip" data-val="Sì, anche a pagamento">Sì, anche a pagamento</div>
-      <div class="chip" data-val="No, solo MoMA">No, basta il MoMA</div>
-      <div class="chip" data-val="Indifferente">Indifferente</div>
-    </div>
-  </div>
-
-  <div class="hu" data-hu="shaver" data-label="'Shaver hall food market'">
-    <div class="q">❓ "Shaver hall food market" - cos'è?</div>
-    <div class="why">E' spuntato tra i suggerimenti ma non lo riconosco come posto di New York. Se sai cos'e' o dov'e' (o com'e' scritto giusto), scrivilo qui.</div>
-    <input type="text" id="shaverTxt" placeholder="Es. link, nome giusto, quartiere..."
-      style="width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px; font-family:inherit; font-size:.9rem; background:#fff; color:var(--ink)">
-  </div>
-
-  <!-- TO BOOK -->
-  <h2>📋 Cose da prenotare</h2>
-  <p class="muted" style="margin-top:0">Le cose che vanno prenotate a parte. Quando ne prenoti una, tocca <b>✅ Prenotata</b> e scrivi <b>giorno e ora</b>: così aggiorno l'itinerario con l'orario giusto.</p>
-
-  <div class="note"><b>✅ Già presi</b> (nessuna azione): pass <b>Go City</b> (bici Central Park, Big Bus 2 giorni, Empire), <b>MoMA</b>. Sotto solo cio' che resta da fissare.</div>
-
-  <div class="bk" data-bk="Empire / Top of the Rock (slot orario)">
-    <div class="bkh"><b>🏙️ Empire State / Top of the Rock</b><span class="bkstat todo">da prenotare</span></div>
-    <div class="why">Lo slot orario nel pass Go City - martedi' mattina presto (meno coda). <i>Empire o Top of the Rock secondo la scelta qui sopra.</i></div>
-    <div class="bkrow">
-      <div class="bktoggle">✅ Prenotata</div>
-      <input class="bkday" type="text" placeholder="giorno">
-      <input class="bktime" type="text" placeholder="ora">
-    </div>
-  </div>
-
-  <div class="bk" data-bk="Guggenheim (sab sera)">
-    <div class="bkh"><b>🖼️ Guggenheim</b><span class="bkstat todo">da prenotare (se confermato)</span></div>
-    <div class="why">Il timed-ticket "paga quanto vuoi" del sabato sera - solo se decidiamo di andarci (vedi punti da chiarire).</div>
-    <div class="bkrow">
-      <div class="bktoggle">✅ Prenotata</div>
-      <input class="bkday" type="text" placeholder="giorno">
-      <input class="bktime" type="text" placeholder="ora">
-    </div>
-  </div>
-
-  <div class="bk done" data-bk="Summit One Vanderbilt">
-    <div class="bkh"><b>🌇 Summit One Vanderbilt</b><span class="bkstat ok">già prenotata</span></div>
-    <div class="why">Venerdi' 14, ore 19:00 (tramonto). Fatto - nessuna azione.</div>
-  </div>
-
   <!-- NEW IDEAS -->
   <h2>✨ Qualcosa che non è previsto?</h2>
   <div class="fb">
@@ -418,26 +310,6 @@
       if(!already) el.classList.add('sel');
       updateStatus();
     });
-  });
-
-  // heads-up chip groups (single-select each, except who)
-  const huSel = {};
-  document.querySelectorAll('.chips[data-group]').forEach(group=>{
-    const g = group.getAttribute('data-group');
-    if(g==='who') return;
-    group.querySelectorAll('.chip').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const already = el.classList.contains('sel');
-        group.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
-        huSel[g] = already ? '' : el.getAttribute('data-val');
-        if(!already) el.classList.add('sel');
-      });
-    });
-  });
-
-  // booking toggles (independent)
-  document.querySelectorAll('.bktoggle').forEach(el=>{
-    el.addEventListener('click', ()=> el.classList.toggle('sel'));
   });
 
   // edit mode per day
@@ -479,31 +351,6 @@
         if(comment) L.push('   💬 ' + comment);
       }
     });
-    const HUS = [
-      ['tor', 'Top of the Rock vs Empire'],
-      ['guggenheim', 'Guggenheim sab sera'],
-      ['fifth230', '230 Fifth rooftop'],
-      ['amnh', 'Museo Storia Naturale (a pagamento)']
-    ];
-    const huLines = [];
-    HUS.forEach(function(h){ if(huSel[h[0]]) huLines.push('   - ' + h[1] + ': ' + huSel[h[0]]); });
-    const shaver = val('shaverTxt');
-    if(shaver) huLines.push('   - "Shaver hall": ' + shaver);
-    if(huLines.length){ L.push(''); L.push('🔎 Punti da chiarire:'); huLines.forEach(function(x){ L.push(x); }); }
-
-    const bkLines = [];
-    document.querySelectorAll('.bk').forEach(function(bk){
-      const t = bk.querySelector('.bktoggle');
-      if(t && t.classList.contains('sel')){
-        const label = bk.getAttribute('data-bk');
-        const d = bk.querySelector('.bkday'); const h = bk.querySelector('.bktime');
-        const dd = d ? d.value.trim() : ''; const hh = h ? h.value.trim() : '';
-        const det = [dd, hh].filter(Boolean).join(' ');
-        bkLines.push('   - ' + label + ': PRENOTATA' + (det ? ' (' + det + ')' : ''));
-      }
-    });
-    if(bkLines.length){ L.push(''); L.push('📋 Prenotazioni:'); bkLines.forEach(function(x){ L.push(x); }); }
-
     const nw = val('newTxt'); const open = val('openText');
     if(nw){ L.push(''); L.push('✨ Da aggiungere (non previsto): ' + nw); }
     if(open){ L.push(''); L.push('💬 Altro: ' + open); }
@@ -536,8 +383,6 @@
     [40.7158,-73.9970,'Chinatown','g1','i'],
     [40.7061,-73.9969,'Ponte di Brooklyn','g2','s'],
     [40.7033,-73.9903,'Dumbo','g2','s'],
-    [40.7027,-73.9906,'Time Out Market Dumbo','g2','i'],
-    [40.7614,-73.9639,'Roosevelt Island Tramway','g5','i'],
     [40.7233,-74.0030,'SoHo','g2','i'],
     [40.7163,-74.0086,'Tribeca','g2','i'],
     [40.7580,-73.9855,'Times Square','g3','s'],
