@@ -227,7 +227,6 @@
       <div class="it int" data-name="NikeTown"><span class="t">👟</span>NikeTown</div>
       <div class="it int" data-name="Sephora"><span class="t">💄</span>Sephora</div>
       <div class="it int" data-name="Raising Cane's"><span class="t">🍗</span>Raising Cane's (pranzo)</div>
-      <div class="it" data-name="Shaver Hall"><span class="t">🍽️</span><span class="newtag">NEW</span>Shaver Hall (food hall sulla 5th Ave, pranzo + AC)</div>
       <div class="it" data-name="MoMA"><span class="t">🖼️</span>MoMA (pomeriggio, AC)</div>
       <div class="it" data-name="Summit 19:00"><span class="t">🌇</span>Summit ore 19:00 (tramonto)</div>
     </div>
@@ -343,6 +342,13 @@
       <div class="chip" data-val="No, solo MoMA">No, basta il MoMA</div>
       <div class="chip" data-val="Indifferente">Indifferente</div>
     </div>
+  </div>
+
+  <div class="hu" data-hu="shaver" data-label="'Shaver hall food market'">
+    <div class="q">❓ "Shaver hall food market" - cos'è?</div>
+    <div class="why">E' spuntato tra i suggerimenti ma non lo riconosco come posto di New York. Se sai cos'e' o dov'e' (o com'e' scritto giusto), scrivilo qui.</div>
+    <input type="text" id="shaverTxt" placeholder="Es. link, nome giusto, quartiere..."
+      style="width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px; font-family:inherit; font-size:.9rem; background:#fff; color:var(--ink)">
   </div>
 
   <!-- TO BOOK -->
@@ -481,6 +487,8 @@
     ];
     const huLines = [];
     HUS.forEach(function(h){ if(huSel[h[0]]) huLines.push('   - ' + h[1] + ': ' + huSel[h[0]]); });
+    const shaver = val('shaverTxt');
+    if(shaver) huLines.push('   - "Shaver hall": ' + shaver);
     if(huLines.length){ L.push(''); L.push('🔎 Punti da chiarire:'); huLines.forEach(function(x){ L.push(x); }); }
 
     const bkLines = [];
@@ -539,7 +547,6 @@
     [40.7614,-73.9776,'MoMA','g3','i'],
     [40.7526,-73.9790,'Summit One Vanderbilt','g3','s'],
     [40.7484,-73.9857,'Empire State','g3','s'],
-    [40.7515,-73.9819,'Shaver Hall (food hall)','g3','i'],
     [40.7539,-74.0021,'Vessel','g4','s'],
     [40.7480,-74.0048,'High Line','g4','s'],
     [40.7424,-74.0061,'Chelsea Market','g4','i'],
