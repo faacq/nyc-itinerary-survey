@@ -27,6 +27,13 @@
   .hero .flag{font-size:2.3rem}
   .hero h1{font-size:1.5rem; margin:.15em 0}
   .hero .sub{opacity:.95; font-size:.95rem}
+  .hero .ver{display:inline-block; margin-top:11px; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.55); color:#fff; font-size:.78rem; font-weight:800; padding:4px 13px; border-radius:999px}
+
+  .changelog{background:#fff; border:1px solid var(--line); border-left:5px solid var(--g5); border-radius:12px; padding:12px 15px; margin:14px 0; font-size:.88rem}
+  .changelog h3{margin:0 0 5px; font-size:.98rem}
+  .changelog .cd{color:var(--muted); font-size:.8rem; font-weight:700}
+  .changelog ul{margin:.3em 0 0; padding-left:1.2em}
+  .changelog li{margin:.18em 0}
 
   .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:15px 17px; margin:13px 0}
   .intro{margin-top:-18px; position:relative}
@@ -140,10 +147,23 @@
     <div class="flag">🗽👥</div>
     <h1>New York — il giro del gruppo</h1>
     <div class="sub">Questo è l'itinerario suggerito. Ora è il momento dei <b>vostri suggerimenti</b>.</div>
+    <div class="ver">📌 versione v3 &middot; aggiornata 27 lug 2026</div>
   </div>
 </header>
 
 <div class="wrap">
+
+  <!-- CHANGELOG -->
+  <div class="changelog">
+    <h3>🆕 Novità di questa versione <span class="cd">(v3 &middot; 27 lug 2026)</span></h3>
+    <ul>
+      <li><b>Shaver Hall</b> chiarito e messo nel giro (food hall sulla 5th Ave) &rarr; venerdi'.</li>
+      <li><b>East Village</b> aggiunto a lunedi'; <b>Greenwich/West Village</b> segnato in chiaro (c'era gia').</li>
+      <li><b>Time Out Market Dumbo</b> (dom) e <b>Roosevelt Island Tramway</b> (sab) integrati.</li>
+      <li>Nuove sezioni <b>Punti da chiarire</b> e <b>Cose da prenotare</b> + nota sul rinomino delle zone.</li>
+    </ul>
+    <p class="muted" style="margin:.5em 0 0">Non vedi queste novita'? E' la cache: ricarica la pagina (Ctrl+F5 / tira giu' per aggiornare).</p>
+  </div>
 
   <!-- WHO ARE YOU (required) -->
   <div class="who">
