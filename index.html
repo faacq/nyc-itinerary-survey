@@ -275,8 +275,9 @@
       <div class="it" data-name="9/11 + Oculus"><span class="t">🕊️</span>9/11 Memorial + Oculus</div>
       <div class="it int" data-name="Eataly"><span class="t">🍝</span>Eataly (pranzo, WTC)</div>
       <div class="it" data-name="Chinatown"><span class="t">🥟</span>Chinatown / Little Italy</div>
-      <div class="it int" data-name="Katz's pastrami"><span class="t">🥪</span>Katz's pastrami</div>
-      <div class="it int" data-name="Sanctum Sanctorum"><span class="t">🎬</span>Sanctum Sanctorum (West Village)</div>
+      <div class="it int" data-name="Katz's pastrami"><span class="t">🥪</span>Katz's pastrami (LES)</div>
+      <div class="it" data-name="East Village (St. Marks)"><span class="t">🎸</span><span class="newtag">NEW</span>East Village (St. Marks Place)</div>
+      <div class="it int" data-name="Sanctum Sanctorum"><span class="t">🎬</span>Sanctum Sanctorum (<b>Greenwich/West Village</b>)</div>
       <div class="it int" data-name="Joe's Pizza"><span class="t">🍕</span>Joe's Pizza</div>
       <div class="it int" data-name="Sex and the City"><span class="t">🎬</span>Sex and the City</div>
       <div class="it" data-name="Chelsea Market"><span class="t">🏬</span>Chelsea Market</div>
@@ -341,6 +342,16 @@
     <div class="chips" data-group="amnh">
       <div class="chip" data-val="Sì, anche a pagamento">Sì, anche a pagamento</div>
       <div class="chip" data-val="No, solo MoMA">No, basta il MoMA</div>
+      <div class="chip" data-val="Indifferente">Indifferente</div>
+    </div>
+  </div>
+
+  <div class="hu" data-hu="mondayload" data-label="Carico di lunedì (East Village aggiunto)">
+    <div class="q">🗓️ Lunedì è diventato il giorno più pieno</div>
+    <div class="why">Aggiungendo l'<b>East Village</b>, lunedi' (mattina al porto/FiDi -> Katz's -> East + Greenwich/West Village -> tramonto sul West Side) diventa parecchio carico, col caldo. Lo teniamo pieno o alleggeriamo qualcosa?</div>
+    <div class="chips" data-group="mondayload">
+      <div class="chip" data-val="Va bene pieno">Va bene pieno</div>
+      <div class="chip" data-val="Alleggerite qualcosa">Alleggerite qualcosa</div>
       <div class="chip" data-val="Indifferente">Indifferente</div>
     </div>
   </div>
@@ -477,7 +488,8 @@
       ['tor', 'Top of the Rock vs Empire'],
       ['guggenheim', 'Guggenheim sab sera'],
       ['fifth230', '230 Fifth rooftop'],
-      ['amnh', 'Museo Storia Naturale (a pagamento)']
+      ['amnh', 'Museo Storia Naturale (a pagamento)'],
+      ['mondayload', 'Carico di lunedì (East Village)']
     ];
     const huLines = [];
     HUS.forEach(function(h){ if(huSel[h[0]]) huLines.push('   - ' + h[1] + ': ' + huSel[h[0]]); });
@@ -526,6 +538,7 @@
     [40.7115,-74.0134,'9/11 Memorial','g1','s'],
     [40.7118,-74.0108,'Oculus','g1','i'],
     [40.7158,-73.9970,'Chinatown','g1','i'],
+    [40.7285,-73.9863,'East Village (St. Marks)','g2','i'],
     [40.7061,-73.9969,'Ponte di Brooklyn','g2','s'],
     [40.7033,-73.9903,'Dumbo','g2','s'],
     [40.7027,-73.9906,'Time Out Market Dumbo','g2','i'],
