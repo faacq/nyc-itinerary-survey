@@ -148,28 +148,15 @@
     <div class="flag">🗽👥</div>
     <h1>New York — il giro del gruppo</h1>
     <div class="sub">Questo è l'itinerario suggerito. Ora è il momento dei <b>vostri suggerimenti</b>.</div>
-    <div class="ver">📌 versione v6.1 &middot; aggiornata 28 lug 2026</div>
+    <div class="ver">📌 versione v6 &middot; aggiornata 28 lug 2026</div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- ATTENZIONE: pagina indietro rispetto al piano corrente -->
-  <div class="changelog" style="border-left-color:#e0912f; background:linear-gradient(135deg,#fff7ec,#fff)">
-    <h3>⚠️ Attenzione: questa pagina mostra il piano di qualche giorno fa</h3>
-    <p style="margin:.3em 0">Il giro è <b>andato avanti</b> dopo un ricalcolo degli orari fatto il 28 luglio.
-    Qui vedete ancora la versione precedente. In particolare <b>Shaver Hall</b>, l'<b>Eataly</b> e
-    l'ingresso al <b>Guggenheim</b> <b>non ci sono già più</b>, e diversi orari sono cambiati.</p>
-    <p style="margin:.3em 0"><b>I vostri suggerimenti servono lo stesso</b> — li confronto io col piano
-    aggiornato prima di applicarli. Segnalate pure quello che vi interessa: nessun commento va perso.</p>
-  </div>
-
   <!-- CHANGELOG -->
   <div class="changelog">
-    <h3>🆕 Novità di questa versione <span class="cd">(v6.1 &middot; 28 lug 2026)</span></h3>
-    <ul>
-      <li>🏷️ <b>Ogni risposta ora porta con sé l'etichetta della pagina che l'ha prodotta</b> (nome, versione, data e quale piano stava mostrando): così non si confonde più un suggerimento vecchio con una richiesta nuova.</li>
-    </ul>
+    <h3>🆕 Novità di questa versione <span class="cd">(v6 &middot; 28 lug 2026)</span></h3>
     <ul>
       <li>✅ <b>Decise tutte le scelte aperte</b> (da Fabrizio) e messe nel piano: vedi la sezione <b>"✅ Decisioni prese"</b> in fondo.</li>
       <li>🏙️ <b>Top of the Rock</b> al posto dell'Empire (mar) &middot; 🖼️ <b>Guggenheim</b> sab 18:00 &middot; 🍸 <b>230 Fifth</b> di giorno &middot; ⛪ <b>St. Patrick's</b> (ven).</li>
@@ -504,39 +491,9 @@
     const nw = val('newTxt'); const open = val('openText');
     if(nw){ L.push(''); L.push('✨ Da aggiungere (non previsto): ' + nw); }
     if(open){ L.push(''); L.push('💬 Altro: ' + open); }
-    formTag(name).forEach(function(x){ L.push(x); });
+    L.push('');
+    L.push('[' + name + ' · survey-gruppo]');
     return L.join('\n');
-  }
-
-  /* ============================================================
-     TAG DI ORIGINE — lega la risposta alla pagina esatta che l'ha
-     prodotta e al piano che mostrava. Questa pagina resta aperta per
-     chi non ha ancora risposto, ma l'itinerario nel frattempo e'
-     andato avanti: senza questo tag una risposta scritta qui sembra
-     una richiesta nuova (successo il 28 lug con Shaver Hall/Eataly,
-     gia' tolti da giorni).
-     ⚠️ Aggiornare a OGNI pubblicazione, insieme al badge di versione.
-     ============================================================ */
-  var FORM = {
-    id:    'survey-gruppo',
-    ver:   'v6.1',
-    built: '2026-07-28',
-    plan:  'itinerario v2.1 + D31',
-    stale: 'questa pagina mostra il piano PRIMA del ricalcolo del 28 lug '
-         + '(D37/D38/D39): Shaver Hall, Eataly e il Guggenheim non ci sono gia\' piu\', '
-         + 'e gli orari sono cambiati. Le richieste scritte qui vanno confrontate col piano corrente.'
-  };
-
-  function formTag(name){
-    var d = new Date(), p = function(n){ return (n<10?'0':'') + n; };
-    var L = ['', '———',
-      '👤 ' + (name || '(senza nome)'),
-      '📋 form: ' + FORM.id + ' ' + FORM.ver + ' · pubblicata ' + FORM.built,
-      '🗺️ piano mostrato: ' + FORM.plan,
-      '🕘 inviato: ' + p(d.getDate()) + '/' + p(d.getMonth()+1) + '/' + d.getFullYear() +
-        ' ' + p(d.getHours()) + ':' + p(d.getMinutes())];
-    if(FORM.stale) L.push('⚠️ ' + FORM.stale);
-    return L;
   }
 
   document.getElementById('sendBtn').addEventListener('click', ()=>{
