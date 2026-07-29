@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New York — Il giro del gruppo: dicci la tua</title>
+<title>New York — Il nostro giro</title>
 <style>
   :root{
     --bg:#fbf7f0; --card:#fff; --ink:#22303c; --muted:#6b7a88; --line:#e7ddcd;
@@ -140,49 +140,75 @@
   .mk .d{width:13px;height:13px;border-radius:50%;background:#33475b;border:2px solid #fff;box-shadow:0 0 0 1px rgba(20,30,45,.4)}
   .mk .d.i{width:10px;height:10px;background:#fff;border:2px solid #33475b}
 </style>
+<style>
+  /* --- v7: tappa su due righe (nome + come/quanto) --- */
+  .it{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 8px}
+  .it .nm{flex:1 1 100%; font-weight:600}
+  .it .meta{flex:0 0 auto; display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+  .it .sl{font-size:.75rem; font-weight:800; color:var(--muted); white-space:nowrap}
+  .it .fx{display:inline-block; background:#eef4fb; color:var(--accent); border:1px solid #cfe0f2;
+          font-size:.66rem; font-weight:800; padding:1px 7px; border-radius:999px; margin-left:6px}
+
+  /* --- come ci si sposta: tre etichette distinte --- */
+  .mv{display:inline-block; font-size:.68rem; font-weight:800; padding:2px 8px; border-radius:999px; white-space:nowrap}
+  .mv.walk{background:#f1f0ec; color:#5c6873; border:1px solid #e0dad0}
+  .mv.bus{background:#e8f1fb; color:#1f3b73; border:1px solid #cfe0f2}
+  .mv.taxi{background:#fff6e2; color:#8a6d12; border:1px solid #f0dfae}
+
+  /* --- orari della giornata --- */
+  .hours{font-size:.85rem; color:#4a5a68; background:#faf7f1; border:1px solid var(--line);
+         border-radius:9px; padding:6px 10px; margin:8px 0 0}
+
+  /* --- termometro --- */
+  .therm{margin:10px 0 2px}
+  .therm .tt{display:flex; align-items:baseline; gap:8px; font-size:.82rem; margin-bottom:4px}
+  .therm .tw{font-weight:800; text-transform:uppercase; letter-spacing:.03em; font-size:.72rem}
+  .therm .tp{color:var(--muted); font-weight:700}
+  .therm .ttrack{position:relative; height:13px; background:#f0ece3; border-radius:999px;
+                 overflow:hidden; border:1px solid var(--line)}
+  .therm .tfill{position:absolute; left:0; top:0; bottom:0; border-radius:999px}
+  .therm.ok .tw{color:#2f7a46} .therm.ok .tfill{background:linear-gradient(90deg,#5cb874,#3f9d5a)}
+  .therm.warn .tw{color:#b46f1a} .therm.warn .tfill{background:linear-gradient(90deg,#f0b657,#e0912f)}
+  .therm.bad .tw{color:#b23a5b} .therm.bad .tfill{background:linear-gradient(90deg,#e2707f,#d1495b)}
+
+  .busline{margin-top:8px; font-size:.83rem; background:#eef4fb; border:1px solid #cfe0f2;
+           border-left:4px solid var(--accent); border-radius:9px; padding:6px 10px; color:#2b3a4a}
+
+  /* --- legenda del termometro --- */
+  .tlegend{margin:12px 0}
+  .tl{display:flex; gap:10px; align-items:flex-start; font-size:.87rem; padding:5px 0}
+  .tdot{flex:0 0 auto; width:14px; height:14px; border-radius:999px; margin-top:4px; border:1px solid rgba(0,0,0,.12)}
+  .tdot.ok{background:#3f9d5a} .tdot.warn{background:#e0912f} .tdot.bad{background:#d1495b}
+</style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
     <div class="flag">🗽👥</div>
-    <h1>New York — il giro del gruppo</h1>
-    <div class="sub">Questo è l'itinerario suggerito. Ora è il momento dei <b>vostri suggerimenti</b>.</div>
-    <div class="ver">📌 versione v6.1 &middot; aggiornata 28 lug 2026</div>
+    <h1>New York — il nostro giro</h1>
+    <div class="sub">Questo è l'itinerario, giorno per giorno. <b>Leggetelo e ditemi la vostra</b>: siamo ancora in tempo per cambiare.</div>
+    <div class="ver">📌 versione v7 &middot; 29 lug 2026</div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- ATTENZIONE: pagina indietro rispetto al piano corrente -->
-  <div class="changelog" style="border-left-color:#e0912f; background:linear-gradient(135deg,#fff7ec,#fff)">
-    <h3>⚠️ Attenzione: questa pagina mostra il piano di qualche giorno fa</h3>
-    <p style="margin:.3em 0">Il giro è <b>andato avanti</b> dopo un ricalcolo degli orari fatto il 28 luglio.
-    Qui vedete ancora la versione precedente. In particolare <b>Shaver Hall</b>, l'<b>Eataly</b> e
-    l'ingresso al <b>Guggenheim</b> <b>non ci sono già più</b>, e diversi orari sono cambiati.</p>
-    <p style="margin:.3em 0"><b>I vostri suggerimenti servono lo stesso</b> — li confronto io col piano
-    aggiornato prima di applicarli. Segnalate pure quello che vi interessa: nessun commento va perso.</p>
-  </div>
-
-  <!-- CHANGELOG -->
   <div class="changelog">
-    <h3>🆕 Novità di questa versione <span class="cd">(v6.1 &middot; 28 lug 2026)</span></h3>
+    <h3>🆕 Cosa c'è di nuovo <span class="cd">(v7 &middot; 29 lug 2026)</span></h3>
     <ul>
-      <li>🏷️ <b>Ogni risposta ora porta con sé l'etichetta della pagina che l'ha prodotta</b> (nome, versione, data e quale piano stava mostrando): così non si confonde più un suggerimento vecchio con una richiesta nuova.</li>
+      <li>📅 <b>L'itinerario è completo e verificato</b>: tutte e sei le giornate, con le tappe vere e nell'ordine giusto.</li>
+      <li>🌡️ Ogni giornata ha il suo <b>termometro</b>: quanto è piena.</li>
+      <li>🚶🚌🚕 Per ogni tappa c'è scritto <b>come ci si arriva</b> e <b>quanto ci si sta</b>.</li>
+      <li>🕗 Per ogni giornata: <b>a che ora si esce e a che ora si rientra</b>.</li>
     </ul>
-    <ul>
-      <li>✅ <b>Decise tutte le scelte aperte</b> (da Fabrizio) e messe nel piano: vedi la sezione <b>"✅ Decisioni prese"</b> in fondo.</li>
-      <li>🏙️ <b>Top of the Rock</b> al posto dell'Empire (mar) &middot; 🖼️ <b>Guggenheim</b> sab 18:00 &middot; 🍸 <b>230 Fifth</b> di giorno &middot; ⛪ <b>St. Patrick's</b> (ven).</li>
-      <li>🌉 <b>Domenica riordinata</b>: SoHo/Ghostbusters prima, poi il ponte a piedi verso Dumbo (bus a senso unico).</li>
-      <li>🔤 Le giornate ora sono numerate <b>Giorno 1 ... Giorno 6</b>.</li>
-    </ul>
-    <p class="muted" style="margin:.5em 0 0">Non vedi queste novita'? E' la cache: ricarica la pagina (Ctrl+F5 / tira giu' per aggiornare).</p>
+    <p class="muted" style="margin:.5em 0 0">Non vedete le novità? È la cache: ricaricate la pagina (tirate giù per aggiornare).</p>
   </div>
 
   <!-- WHO ARE YOU (required) -->
   <div class="who">
     <h3>👤 Chi sei?</h3>
-    <p class="muted" style="margin:2px 0 8px">Serve per legare i tuoi suggerimenti a te (se qualcuno vuole cose diverse, organizzo dei "rami" del giro).</p>
+    <p class="muted" style="margin:2px 0 8px">Serve solo per sapere da chi arriva ogni suggerimento.</p>
     <div class="chips" data-group="who">
       <div class="chip" data-val="MariaPaola">MariaPaola</div>
       <div class="chip" data-val="Tony">Tony</div>
@@ -191,214 +217,69 @@
     </div>
   </div>
 
-  <!-- HOW IT WAS BUILT -->
-  <h2>🧭 Come è stato costruito il giro</h2>
+  <!-- COME FUNZIONA IL GIRO -->
+  <h2>🧭 Come funziona il giro</h2>
   <div class="card">
-    <div class="princ"><span class="ic">🗺️</span><div><b>Un quartiere al giorno (per zone).</b> Ogni giornata sta in una zona, così si cammina dentro un quartiere invece di attraversare la città (e col caldo si sente).</div></div>
-    <div class="princ"><span class="ic">📋</span><div><b>Costruito sui vostri questionari.</b> Ho preso il "must-do" di ognuno e le cose che vi accomunano (skyline, Ponte di Brooklyn, shopping, film, cibo) e le ho incastrate nella zona giusta.</div></div>
-    <div class="princ"><span class="ic">🔥</span><div><b>Ritmo anti-caldo.</b> Outdoor la mattina presto · musei/AC a mezzogiorno · skyline e passeggiate la sera. Con soste gelato + aria condizionata.</div></div>
-    <div class="princ"><span class="ic">🎟️</span><div><b>Biglietti già presi</b> (Go City: bici, Big Bus 2 giorni, Top of the Rock · Summit · MoMA) — quelli sono fissi.</div></div>
-    <div class="princ"><span class="ic">🚕</span><div><b>Spostamenti.</b> A piedi dentro ogni quartiere + <b>Big Bus</b> (sab/dom) + <b>taxi/Uber</b> per le tratte più lunghe (usiamo poco la metro).</div></div>
+    <div class="princ"><span class="ic">🗺️</span><div><b>Un quartiere al giorno.</b> Ogni giornata sta in una zona sola, così si cammina <i>dentro</i> un quartiere invece di attraversare la città. Ad agosto, col caldo, è la differenza fra una bella giornata e una giornata pesante.</div></div>
+    <div class="princ"><span class="ic">🔥</span><div><b>Il caldo comanda l'ordine.</b> All'aperto la mattina presto · al fresco (musei, negozi, food hall) nelle ore centrali · fuori di nuovo la sera, quando la città è più bella. Le soste con l'aria condizionata e il gelato <b>sono in programma</b>, non lasciate al caso.</div></div>
+    <div class="princ"><span class="ic">🍽️</span><div><b>Un pasto seduto al giorno</b>, più soste veloci. Due pranzi veri si mangiano mezzo pomeriggio.</div></div>
+    <div class="princ"><span class="ic">🎟️</span><div><b>I biglietti sono già presi</b> — Summit, Top of the Rock, MoMA, bici a Central Park, Big Bus. Quelli non si toccano più.</div></div>
   </div>
 
-  <!-- PROCESS -->
-  <h2>🔄 Come funziona</h2>
+  <h3 style="margin-top:1.4em">🚶 Come ci si sposta</h3>
   <div class="card">
-    <div class="proc"><span class="pn">1</span><div><b>Bozza dell'itinerario</b> — è questa qui. 📝</div></div>
-    <div class="proc now"><span class="pn">2</span><div><b>Raccolgo i vostri feedback e li integro.</b> <span class="youare">👈 siamo qui</span></div></div>
-    <div class="proc"><span class="pn">3</span><div>Definisco il <b>dettaglio dei collegamenti bus</b> e <b>affino i percorsi (route)</b>.</div></div>
-    <div class="proc"><span class="pn">4</span><div><b>Lista delle cose da prenotare.</b> 📋</div></div>
-    <p class="muted" style="margin:11px 0 0">L'itinerario è <b>sempre aperto a modifiche e aggiustamenti</b>: il sistema può <b>proporre percorsi (route) rivisti</b> in base ai feedback che arrivano.</p>
+    <p style="margin-top:0">Su ogni tappa qui sotto trovate scritto <b>come ci si arriva</b>, con quanto dura il tragitto:</p>
+    <div class="princ"><span class="ic">🚶</span><div><span class="mv walk">🚶 a piedi</span> &nbsp;Il caso normale. Le giornate sono costruite apposta perché le distanze siano camminabili.</div></div>
+    <div class="princ"><span class="ic">🚌</span><div><span class="mv bus">🚌 Big Bus</span> &nbsp;Solo <b>sabato e domenica</b>: il pass copre due giorni consecutivi.</div></div>
+    <div class="princ"><span class="ic">🚕</span><div><span class="mv taxi">🚕 taxi/Uber</span> &nbsp;Per i salti lunghi. Essendo in <b>8, sono sempre 2 macchine</b>.</div></div>
+    <p class="muted" style="margin-bottom:0">La metropolitana la usiamo poco, per scelta: in otto è scomoda e ci si perde di vista.</p>
   </div>
 
-  <!-- MAP -->
-  <h2>🗺️ La mappa del giro</h2>
-  <p class="muted" style="margin-top:0">Manhattan tra i due fiumi. Le <b>aree colorate</b> sono le <b>5 zone</b> del giro (nome + giorno). I pallini sono le tappe: <b>pieni</b> = scheletro (must-do), <b>vuoti</b> = punti d'interesse. <b>Tocca un pallino</b> per il nome; <b>pizzica con due dita</b> (o i tasti +/-) per zoomare. 🏨 = dove dormiamo.</p>
-
-  <div class="note">
-    <b>🔤 Le giornate ora hanno un numero.</b> Ogni giorno e' <b>Giorno 1 ... Giorno 6</b> in ordine (gio &rarr; mar), col quartiere come descrizione: si legge dall'alto in basso. La mappa qui sotto usa ancora i colori/codici delle zone G1-G5 come riferimento geografico. Le tappe aggiunte sono segnate <span class="newtag">NEW</span>.
+  <!-- TERMOMETRO -->
+  <h2>🌡️ Il termometro delle giornate</h2>
+  <div class="card">
+    <p style="margin-top:0">Ogni giornata ha una <b>barra</b> che dice <b>quanto è piena</b>: quante ore servono davvero (tappe + spostamenti, con un margine perché siamo in otto e ci si muove più lenti) rispetto alle ore che quella giornata ha.</p>
+    <div class="tlegend">
+      <div class="tl"><span class="tdot ok"></span><div><b>Tranquilla</b> — c'è spazio: se una tappa piace più del previsto, ci si resta.</div></div>
+      <div class="tl"><span class="tdot warn"></span><div><b>Piena</b> — ci sta, ma senza tempo da buttare. Sono le giornate con un orario fisso dentro.</div></div>
+      <div class="tl"><span class="tdot bad"></span><div><b>Troppo piena</b> — non ci starebbe. <b>Adesso non ce n'è nessuna</b>, e l'obiettivo è che resti così.</div></div>
+    </div>
+    <p style="margin-bottom:0" class="muted">Se aggiungiamo qualcosa a una giornata già piena, qualcos'altro deve uscire: per questo vi chiedo di dirmi non solo <i>cosa aggiungere</i>, ma anche <i>a cosa rinunciate</i>.</p>
   </div>
+
+  <!-- MAPPA -->
+  <h2>🗺️ Dove si va</h2>
+  <p class="muted" style="margin-top:0">Le <b>aree colorate</b> sono le zone del giro. I pallini sono le tappe: <b>pieni</b> = tappe principali, <b>vuoti</b> = extra facoltativi. <b>Toccate un pallino</b> per vedere cos'è e in che giorno. 🏨 = l'hotel.</p>
   <div class="card">
     <div id="map"></div>
     <div class="mk">
-      <span class="k"><span class="d"></span> tappa scheletro</span>
-      <span class="k"><span class="d i"></span> punto d'interesse</span>
+      <span class="k"><span class="d"></span> tappa principale</span>
+      <span class="k"><span class="d i"></span> extra facoltativo</span>
       <span class="k">🏨 hotel (Times Square)</span>
     </div>
-    <div class="mlegend">
-      <div class="lg"><span class="sw" style="background:#0f8a8a"></span><div><b>G1 · FiDi &amp; Porto</b> — Statua, Wall St, 9/11, Oculus, Chinatown</div></div>
-      <div class="lg"><span class="sw" style="background:#5b6cc9"></span><div><b>G2 · Downtown &amp; Brooklyn</b> — Ponte di Brooklyn, Dumbo, SoHo, Tribeca</div></div>
-      <div class="lg"><span class="sw" style="background:#e0912f"></span><div><b>G3 · Midtown</b> (🏨 hotel) — Times Sq, 5th Ave, MoMA, Summit, Top of the Rock</div></div>
-      <div class="lg"><span class="sw" style="background:#c9557d"></span><div><b>G4 · West Side</b> — High Line, Vessel, Little Island, Chelsea Mkt</div></div>
-      <div class="lg"><span class="sw" style="background:#3f9d5a"></span><div><b>G5 · Central Park &amp; Uptown</b> — Central Park (bici), Upper East Side</div></div>
-    </div>
   </div>
 
-  <!-- DETAIL, interactive -->
-  <h2>📅 Il piano, giorno per giorno</h2>
-  <p class="muted" style="margin-top:0">Questo è l'<b>itinerario proposto</b>, in ordine <b>dalla mattina alla sera</b>. Per cambiarlo, tocca <b>✏️ Modifica</b> sul giorno: barri le tappe da togliere e lasci un commento. Le icone indicano il tipo (🍽️ cibo · 🛍️ shopping · 🎬 film · 📸 foto · 🎤 esperienza); il pallino <b style="color:#e0912f">arancione</b> = punto di interesse.</p>
+  <!-- GIORNATE -->
+  <h2>📅 Le sei giornate</h2>
+  <p class="muted" style="margin-top:0">In ordine, dalla mattina alla sera. Per <b>proporre una modifica</b>: toccate <b>✏️ Modifica</b> sul giorno, barrate le tappe che togliereste e scrivete il perché. Non cancella niente — arriva a me come proposta.</p>
 
-  <div class="day" data-dayname="Gio 13 - Midtown (arrivo)">
-    <div class="dh"><span class="dd">Giorno 1</span><span class="muted" style="margin-left:5px">Gio 13</span><span class="zb b3">Midtown</span><span class="muted">arrivo</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it" data-name="Times Square di notte"><span class="t">🌃</span>Times Square di notte</div>
-      <div class="it int" data-name="Ellen's Stardust (cena)"><span class="t">🎤</span>Cena di benvenuto: Ellen's Stardust</div>
-      <div class="it int" data-name="Midtown Comics"><span class="t">🧩</span>Midtown Comics (dopo cena)</div>
-      <div class="it int" data-name="gelato"><span class="t">🍦</span>gelato</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per giovedì..."></textarea>
+  <div id="days"></div>
+
+  <!-- FEEDBACK -->
+  <h2>✨ Manca qualcosa?</h2>
+  <div class="card">
+    <p class="muted" style="margin-top:0">Un posto, un negozio, un locale, una cosa vista in un film. Se sapete già <b>in che giorno</b> ci starebbe bene, scrivetelo: mi fa risparmiare un giro.</p>
+    <textarea class="free" id="newTxt" placeholder="Vorrei aggiungere..."></textarea>
   </div>
 
-  <div class="day" data-dayname="Ven 14 - Midtown">
-    <div class="dh"><span class="dd">Giorno 2</span><span class="muted" style="margin-left:5px">Ven 14</span><span class="zb b3">Midtown</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it" data-name="Grand Central"><span class="t">🚉</span>Grand Central (mattina)</div>
-      <div class="it" data-name="Bryant Park"><span class="t">🌳</span>Bryant Park</div>
-      <div class="it" data-name="5th Ave"><span class="t">🛍️</span>5th Avenue</div>
-      <div class="it" data-name="St Patrick Cathedral"><span class="t">⛪</span><span class="newtag">NEW</span>St. Patrick's Cathedral (5th Ave, gratis)</div>
-      <div class="it int" data-name="Lego"><span class="t">🧸</span>Lego Store</div>
-      <div class="it" data-name="230 Fifth rooftop"><span class="t">🍸</span><span class="newtag">NEW</span>230 Fifth rooftop (di giorno, vista) - slot da ottimizzare</div>
-      <div class="it int" data-name="NBA Store"><span class="t">🏀</span>NBA Store</div>
-      <div class="it int" data-name="NikeTown"><span class="t">👟</span>NikeTown</div>
-      <div class="it int" data-name="Sephora"><span class="t">💄</span>Sephora</div>
-      <div class="it int" data-name="Raising Cane's"><span class="t">🍗</span>Raising Cane's (pranzo)</div>
-      <div class="it" data-name="Shaver Hall"><span class="t">🍽️</span><span class="newtag">NEW</span>Shaver Hall (food hall sulla 5th Ave, pranzo + AC)</div>
-      <div class="it" data-name="MoMA"><span class="t">🖼️</span>MoMA (pomeriggio, AC)</div>
-      <div class="it" data-name="Summit 19:00"><span class="t">🌇</span>Summit ore 19:00 (tramonto)</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per venerdì..."></textarea>
-  </div>
-
-  <div class="day" data-dayname="Sab 15 - Uptown (Bus g.1)">
-    <div class="dh"><span class="dd">Giorno 3</span><span class="muted" style="margin-left:5px">Sab 15</span><span class="zb b5">Uptown</span><span class="muted">🚌 Bus g.1</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it" data-name="Bici Central Park"><span class="t">🚲</span>Bici a Central Park (mattina)</div>
-      <div class="it" data-name="shopping/AC"><span class="t">❄️</span>Pausa AC + shopping (mezzogiorno)</div>
-      <div class="it" data-name="Upper East Side"><span class="t">🏙️</span>Upper East Side (pomeriggio)</div>
-      <div class="it" data-name="Roosevelt Island Tramway"><span class="t">🚡</span><span class="newtag">NEW</span>Roosevelt Island Tramway (funivia, vista)</div>
-      <div class="it int" data-name="Met steps (Gossip Girl)"><span class="t">🎬</span>Met steps (Gossip Girl)</div>
-      <div class="it int" data-name="Marc Jacobs"><span class="t">🛍️</span>Marc Jacobs</div>
-      <div class="it int" data-name="Alo"><span class="t">🛍️</span>Alo</div>
-      <div class="it" data-name="Guggenheim 18:00"><span class="t">🖼️</span><span class="newtag">NEW</span>Guggenheim ore 18:00 (pay-what-you-wish) - pomeriggio da riempire</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per sabato..."></textarea>
-  </div>
-
-  <div class="day" data-dayname="Dom 16 - Brooklyn (Bus g.2)">
-    <div class="dh"><span class="dd">Giorno 4</span><span class="muted" style="margin-left:5px">Dom 16</span><span class="zb b2">Brooklyn</span><span class="muted">🚌 Bus g.2</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it int" data-name="Ghostbusters HQ"><span class="t">🎬</span>Ghostbusters HQ (Tribeca)</div>
-      <div class="it" data-name="SoHo/Tribeca"><span class="t">🏬</span>SoHo / Tribeca (mattina)</div>
-      <div class="it int" data-name="shopping SoHo"><span class="t">🛍️</span>Shopping SoHo</div>
-      <div class="it" data-name="Ponte di Brooklyn (giorno)"><span class="t">☀️</span>Ponte di Brooklyn a piedi (verso Dumbo)</div>
-      <div class="it" data-name="Dumbo"><span class="t">📷</span>Dumbo + Manhattan Bridge</div>
-      <div class="it int" data-name="foto al molo"><span class="t">📸</span>Foto al molo (Brooklyn Bridge Park)</div>
-      <div class="it" data-name="Time Out Market Dumbo"><span class="t">🍽️</span><span class="newtag">NEW</span>Time Out Market Dumbo (pranzo, vista ponti + AC)</div>
-      <div class="it" data-name="cena + passeggiata"><span class="t">🌃</span>Rientro + cena (sera)</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per domenica..."></textarea>
-  </div>
-
-  <div class="day" data-dayname="Lun 17 - FiDi + West Side">
-    <div class="dh"><span class="dd">Giorno 5</span><span class="muted" style="margin-left:5px">Lun 17</span><span class="zb b1">FiDi</span><span class="zb b4">West Side</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it" data-name="Traghetto Statua"><span class="t">⛴️</span>Traghetto Statua (mattina)</div>
-      <div class="it" data-name="Wall St"><span class="t">🏛️</span>Wall St</div>
-      <div class="it" data-name="9/11 + Oculus"><span class="t">🕊️</span>9/11 Memorial + Oculus</div>
-      <div class="it int" data-name="Eataly"><span class="t">🍝</span>Eataly (pranzo, WTC)</div>
-      <div class="it" data-name="Chinatown"><span class="t">🥟</span>Chinatown / Little Italy</div>
-      <div class="it int" data-name="Katz's pastrami"><span class="t">🥪</span>Katz's pastrami (LES)</div>
-      <div class="it" data-name="East Village (St. Marks)"><span class="t">🎸</span><span class="newtag">NEW</span>East Village (St. Marks Place)</div>
-      <div class="it int" data-name="Sanctum Sanctorum"><span class="t">🎬</span>Sanctum Sanctorum (<b>Greenwich/West Village</b>)</div>
-      <div class="it int" data-name="Joe's Pizza"><span class="t">🍕</span>Joe's Pizza</div>
-      <div class="it int" data-name="Sex and the City"><span class="t">🎬</span>Sex and the City</div>
-      <div class="it" data-name="Chelsea Market"><span class="t">🏬</span>Chelsea Market</div>
-      <div class="it" data-name="High Line"><span class="t">🌿</span>High Line</div>
-      <div class="it" data-name="Little Island (tramonto)"><span class="t">🌇</span>Little Island (tramonto)</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per lunedì (il giorno più pieno)..."></textarea>
-  </div>
-
-  <div class="day" data-dayname="Mar 18 - partenza">
-    <div class="dh"><span class="dd">Giorno 6</span><span class="muted" style="margin-left:5px">Mar 18</span><span class="zb b3">Midtown</span><span class="zb b4">West Side</span><span class="muted">partenza</span><button class="editbtn" type="button">✏️ Modifica</button></div>
-    <div class="seq">
-      <div class="it" data-name="Top of the Rock"><span class="t">🏙️</span><span class="newtag">NEW</span>Top of the Rock (mattina) - al posto dell'Empire</div>
-      <div class="it" data-name="Vessel + Hudson Yards"><span class="t">🌀</span>Vessel + Hudson Yards</div>
-      <div class="it int" data-name="All'Antico Vinaio"><span class="t">🥪</span>All'Antico Vinaio</div>
-      <div class="it int" data-name="Junior's"><span class="t">🍰</span>Junior's (cheesecake)</div>
-      <div class="it" data-name="ultimi acquisti"><span class="t">🛍️</span>Ultimi acquisti 5th Ave</div>
-      <div class="it" data-name="aeroporto"><span class="t">✈️</span>Aeroporto (volo 22:00)</div>
-    </div>
-    <div class="edithint">👆 Tocca una tappa per proporre di toglierla · scrivi sotto un suggerimento</div>
-    <textarea class="daycomment" placeholder="💬 Suggerimento per martedì..."></textarea>
-  </div>
-
-  <!-- DECISIONS TAKEN -->
-  <h2>✅ Decisioni prese</h2>
-  <p class="muted" style="margin-top:0">I punti aperti sono stati <b>decisi</b> (da Fabrizio) e li ho gia' messi nel piano qui sopra. Se qualcosa non vi torna, usate <b>✏️ Modifica</b> sul giorno o lo spazio libero in fondo.</p>
-  <div class="note">
-    <ul style="margin:.2em 0; padding-left:1.2em; line-height:1.6">
-      <li>🏙️ <b>Top of the Rock</b> al posto dell'Empire (martedi').</li>
-      <li>🖼️ <b>Guggenheim</b> sabato ore 18:00 (pomeriggio da riempire).</li>
-      <li>🍸 <b>230 Fifth</b> rooftop: si', <b>di giorno</b> (slot da ottimizzare).</li>
-      <li>🦕 <b>Museo di Storia Naturale</b>: no, resta solo il <b>MoMA</b>.</li>
-      <li>🗓️ <b>Lunedi'</b> resta pieno (con East Village).</li>
-      <li>🌉 <b>Domenica</b>: giro in <b>bus ottimizzato</b> (SoHo/Ghostbusters prima, poi il ponte a piedi verso Dumbo).</li>
-      <li>🔤 Le giornate ora si chiamano <b>Giorno 1 ... Giorno 6</b>.</li>
-      <li>🚌 <b>Bus</b>: sabato + domenica.</li>
-      <li>⛪ Aggiunta: <b>St. Patrick's Cathedral</b> (venerdi').</li>
-    </ul>
-  </div>
-
-  <!-- TO BOOK -->
-  <h2>📋 Cose da prenotare</h2>
-  <p class="muted" style="margin-top:0">Le cose che vanno prenotate a parte. Quando ne prenoti una, tocca <b>✅ Prenotata</b> e scrivi <b>giorno e ora</b>: così aggiorno l'itinerario con l'orario giusto.</p>
-
-  <div class="note"><b>✅ Già presi</b> (nessuna azione): pass <b>Go City</b> (bici Central Park, Big Bus 2 giorni, Top of the Rock), <b>MoMA</b>. Sotto solo cio' che resta da fissare.</div>
-
-  <div class="bk" data-bk="Top of the Rock (slot orario)">
-    <div class="bkh"><b>🏙️ Top of the Rock</b><span class="bkstat todo">da prenotare</span></div>
-    <div class="why">Slot orario nel pass Go City - <b>martedi' mattina</b> presto (meno coda). Scelto al posto dell'Empire.</div>
-    <div class="bkrow">
-      <div class="bktoggle">✅ Prenotata</div>
-      <input class="bkday" type="text" placeholder="giorno">
-      <input class="bktime" type="text" placeholder="ora">
-    </div>
-  </div>
-
-  <div class="bk" data-bk="Guggenheim (sab sera)">
-    <div class="bkh"><b>🖼️ Guggenheim</b><span class="bkstat todo">da prenotare</span></div>
-    <div class="why">Timed-ticket "paga quanto vuoi" - <b>sabato ore 18:00</b> (deciso). Da prenotare in anticipo.</div>
-    <div class="bkrow">
-      <div class="bktoggle">✅ Prenotata</div>
-      <input class="bkday" type="text" placeholder="giorno">
-      <input class="bktime" type="text" placeholder="ora">
-    </div>
-  </div>
-
-  <div class="bk done" data-bk="Summit One Vanderbilt">
-    <div class="bkh"><b>🌇 Summit One Vanderbilt</b><span class="bkstat ok">già prenotata</span></div>
-    <div class="why">Venerdi' 14, ore 19:00 (tramonto). Fatto - nessuna azione.</div>
-  </div>
-
-  <!-- NEW IDEAS -->
-  <h2>✨ Qualcosa che non è previsto?</h2>
-  <div class="fb">
-    <div class="q">Un posto, un'esperienza, un cibo che ti piacerebbe e <b>non c'è ancora</b>? Buttalo qui, anche se non sai in che giorno.</div>
-    <textarea class="free" id="newTxt" placeholder="Cosa vorresti aggiungere di nuovo..."></textarea>
-  </div>
-
-  <!-- FREE -->
   <h2>💬 Altro da dirmi?</h2>
-  <div class="card"><textarea class="free" id="openText" placeholder="Spazio libero..."></textarea></div>
+  <div class="card">
+    <p class="muted" style="margin-top:0">Qualsiasi cosa: una giornata che vi sembra troppo piena, una che vi sembra vuota, una preoccupazione, una preferenza. Anche "per me va benissimo così" è una risposta utile.</p>
+    <textarea class="free" id="openText" placeholder="Spazio libero..."></textarea>
+  </div>
 
   <div class="footer">
-    Survey itinerario · la compagnia · New York 13–18 ago 2026<br>
+    L'itinerario · la compagnia · New York 13–18 ago 2026<br>
     Il feedback arriva su WhatsApp 💚
   </div>
 </div>
@@ -411,139 +292,681 @@
 </div>
 
 <script>
-  // who
-  let who = '';
-  const whoGroup = document.querySelector('[data-group="who"]');
-  whoGroup.querySelectorAll('.chip').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      const already = el.classList.contains('sel');
-      whoGroup.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
-      who = already ? '' : el.getAttribute('data-val');
-      if(!already) el.classList.add('sel');
-      updateStatus();
+/* ============================================================
+   DATI DELLE GIORNATE - GENERATI da feasibility/gen_webdays.py
+   a partire da feasibility/data/day*.computed.json.
+   NON scrivere a mano: si rigenera e si sostituisce il blocco.
+   ============================================================ */
+var DAYS = [
+ {
+  "id": "g1",
+  "name": "Giorno 1 · Gio 13",
+  "zone": "Midtown - arrivo",
+  "pct": 89,
+  "verd": "ok",
+  "out": "19:00",
+  "back": "23:00",
+  "end": "22:33",
+  "bus": 0,
+  "taxi": 0,
+  "stops": [
+   {
+    "n": "Times Square di notte",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 26,
+    "mv": "walk",
+    "lg": 9
+   },
+   {
+    "n": "Ellen's Stardust Diner (cena di benvenuto)",
+    "i": "✨",
+    "s": "esperienza ~1h30",
+    "m": 115,
+    "mv": "walk",
+    "lg": 16
+   },
+   {
+    "n": "Midtown Comics",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 44,
+    "mv": "walk",
+    "lg": 22,
+    "opt": true
+   },
+   {
+    "n": "Gelato (rientro hotel)",
+    "i": "🍽️",
+    "s": "pasto ~25 min",
+    "m": 41,
+    "mv": "walk",
+    "lg": 16,
+    "opt": true
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "name": "Giorno 2 · Ven 14",
+  "zone": "Midtown + Summit",
+  "pct": 100,
+  "verd": "warn",
+  "out": "10:00",
+  "back": "22:30",
+  "end": "22:27",
+  "bus": 0,
+  "taxi": 1,
+  "stops": [
+   {
+    "n": "Grand Central",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 38,
+    "mv": "walk",
+    "lg": 23
+   },
+   {
+    "n": "Bryant Park",
+    "i": "🚶",
+    "s": "giro ~1h",
+    "m": 78,
+    "mv": "walk",
+    "lg": 17
+   },
+   {
+    "n": "5th Avenue (passeggiata 42nd-57th)",
+    "i": "🚶",
+    "s": "giro ~1h",
+    "m": 67,
+    "mv": "walk",
+    "lg": 18
+   },
+   {
+    "n": "St. Patrick's Cathedral",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 30,
+    "mv": "walk",
+    "lg": 11
+   },
+   {
+    "n": "Raising Cane's (Times Sq) - PRANZO",
+    "i": "🍽️",
+    "s": "pasto ~45 min",
+    "m": 71,
+    "mv": "walk",
+    "lg": 24
+   },
+   {
+    "n": "MoMA",
+    "i": "🖼️",
+    "s": "museo ~2h",
+    "m": 128,
+    "mv": "taxi",
+    "lg": 17
+   },
+   {
+    "n": "Shopping 5th Ave (Lego + NBA + Nike + Sephora)",
+    "i": "🛍️",
+    "s": "negozio ~1h",
+    "m": 67,
+    "mv": "walk",
+    "lg": 12,
+    "opt": true
+   },
+   {
+    "n": "SUMMIT One Vanderbilt",
+    "i": "🏙️",
+    "s": "terrazza ~2h",
+    "m": 136,
+    "mv": "walk",
+    "lg": 20,
+    "fixed": "19:00"
+   },
+   {
+    "n": "Cena + gelato (Midtown)",
+    "i": "🍽️",
+    "s": "pasto ~1h15",
+    "m": 87,
+    "mv": "walk",
+    "lg": 12
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "name": "Giorno 3 · Sab 15",
+  "zone": "Central Park & Uptown",
+  "pct": 86,
+  "verd": "ok",
+  "out": "08:45",
+  "back": "21:30",
+  "end": "19:41",
+  "bus": 1,
+  "taxi": 2,
+  "stops": [
+   {
+    "n": "Bici a Central Park (noleggio 59th)",
+    "i": "🚲",
+    "s": "attivita ~2h",
+    "m": 128,
+    "mv": "walk",
+    "lg": 30
+   },
+   {
+    "n": "Bethesda Terrace + Bow Bridge",
+    "i": "📸",
+    "s": "foto ~20 min",
+    "m": 55,
+    "mv": "walk",
+    "lg": 23,
+    "opt": true
+   },
+   {
+    "n": "Pausa AC + shopping (Bloomingdale's / Apple UES)",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 27,
+    "mv": "walk",
+    "lg": 32,
+    "opt": true
+   },
+   {
+    "n": "Dylan's Candy Bar (3rd Ave & 60th)",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 28,
+    "mv": "walk",
+    "lg": 8,
+    "opt": true
+   },
+   {
+    "n": "Pranzo veloce (zona 59th)",
+    "i": "🍽️",
+    "s": "pasto ~40 min",
+    "m": 48,
+    "mv": "walk",
+    "lg": 8
+   },
+   {
+    "n": "Met steps (Gossip Girl) + Museum Mile",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 9,
+    "mv": "bus",
+    "lg": 29
+   },
+   {
+    "n": "Guggenheim (solo esterno)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 41,
+    "mv": "walk",
+    "lg": 17,
+    "opt": true
+   },
+   {
+    "n": "Marc Jacobs + Alo (UES)",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 28,
+    "mv": "walk",
+    "lg": 27,
+    "opt": true
+   },
+   {
+    "n": "Roosevelt Island Tramway (andata/ritorno)",
+    "i": "🚲",
+    "s": "attivita ~45 min",
+    "m": 73,
+    "mv": "walk",
+    "lg": 33,
+    "opt": true
+   },
+   {
+    "n": "Eataly Flatiron (200 5th Ave) - CENA",
+    "i": "🍽️",
+    "s": "pasto ~1h20",
+    "m": 108,
+    "mv": "taxi",
+    "lg": 27
+   },
+   {
+    "n": "Rientro hotel",
+    "i": "🚶",
+    "s": "rientro",
+    "m": 27,
+    "mv": "taxi",
+    "lg": 22
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "name": "Giorno 4 · Dom 16",
+  "zone": "Downtown & Brooklyn",
+  "pct": 88,
+  "verd": "ok",
+  "out": "10:30",
+  "back": "21:30",
+  "end": "20:10",
+  "bus": 2,
+  "taxi": 1,
+  "stops": [
+   {
+    "n": "Ghostbusters HQ (14 N Moore, Tribeca)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 1,
+    "mv": "bus",
+    "lg": 44
+   },
+   {
+    "n": "SoHo / Tribeca (passeggiata)",
+    "i": "🚶",
+    "s": "giro ~1h",
+    "m": 69,
+    "mv": "walk",
+    "lg": 23
+   },
+   {
+    "n": "Shopping SoHo (Marc Jacobs, Alo, sneakers)",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 27,
+    "mv": "walk",
+    "lg": 9,
+    "opt": true
+   },
+   {
+    "n": "Chinatown / Little Italy - PRANZO",
+    "i": "🍽️",
+    "s": "pasto ~1h15",
+    "m": 95,
+    "mv": "walk",
+    "lg": 24
+   },
+   {
+    "n": "Ponte di Brooklyn a piedi (da City Hall)",
+    "i": "🚶",
+    "s": "giro ~1h",
+    "m": 84,
+    "mv": "bus",
+    "lg": 22
+   },
+   {
+    "n": "Dumbo (Washington St + Manhattan Bridge)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 38,
+    "mv": "walk",
+    "lg": 38
+   },
+   {
+    "n": "Foto al molo (Brooklyn Bridge Park, Pier 1)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 40,
+    "mv": "walk",
+    "lg": 18,
+    "opt": true
+   },
+   {
+    "n": "Time Out Market Dumbo - CENA",
+    "i": "🍽️",
+    "s": "pasto ~1h20",
+    "m": 95,
+    "mv": "walk",
+    "lg": 16
+   },
+   {
+    "n": "Rientro hotel",
+    "i": "🚶",
+    "s": "rientro",
+    "m": 47,
+    "mv": "taxi",
+    "lg": 42
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "name": "Giorno 5 · Lun 17",
+  "zone": "FiDi → Village → West Side",
+  "pct": 93,
+  "verd": "warn",
+  "out": "08:00",
+  "back": "21:30",
+  "end": "20:34",
+  "bus": 0,
+  "taxi": 2,
+  "stops": [
+   {
+    "n": "Traghetto Staten Island (a/r, passa la Statua)",
+    "i": "🚲",
+    "s": "attivita ~1h30",
+    "m": 25,
+    "mv": "taxi",
+    "lg": 45
+   },
+   {
+    "n": "Wall St / Charging Bull",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 22,
+    "mv": "walk",
+    "lg": 16
+   },
+   {
+    "n": "9/11 Memorial",
+    "i": "📸",
+    "s": "foto ~45 min",
+    "m": 54,
+    "mv": "walk",
+    "lg": 19
+   },
+   {
+    "n": "Oculus",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 22,
+    "mv": "walk",
+    "lg": 11
+   },
+   {
+    "n": "Katz's Delicatessen (LES)",
+    "i": "🍽️",
+    "s": "pasto ~1h",
+    "m": 90,
+    "mv": "walk",
+    "lg": 50
+   },
+   {
+    "n": "Sanctum Sanctorum (177A Bleecker)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 22,
+    "mv": "walk",
+    "lg": 27
+   },
+   {
+    "n": "Joe's Pizza (Carmine St)",
+    "i": "🍽️",
+    "s": "pasto ~35 min",
+    "m": 43,
+    "mv": "walk",
+    "lg": 17
+   },
+   {
+    "n": "Sex and the City (Magnolia + scalinata di Carrie)",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 23,
+    "mv": "walk",
+    "lg": 16
+   },
+   {
+    "n": "Chelsea Market - CENA",
+    "i": "🍽️",
+    "s": "pasto ~1h",
+    "m": 67,
+    "mv": "walk",
+    "lg": 23
+   },
+   {
+    "n": "High Line",
+    "i": "🚶",
+    "s": "giro ~1h",
+    "m": 89,
+    "mv": "walk",
+    "lg": 19
+   },
+   {
+    "n": "Little Island (tramonto)",
+    "i": "📸",
+    "s": "foto ~45 min",
+    "m": 73,
+    "mv": "walk",
+    "lg": 24
+   },
+   {
+    "n": "Rientro hotel",
+    "i": "🚶",
+    "s": "rientro",
+    "m": 32,
+    "mv": "taxi",
+    "lg": 27
+   }
+  ]
+ },
+ {
+  "id": "g6",
+  "name": "Giorno 6 · Mar 18",
+  "zone": "Midtown / West Side + partenza",
+  "pct": 85,
+  "verd": "ok",
+  "out": "08:30",
+  "back": "17:30",
+  "end": "16:11",
+  "bus": 0,
+  "taxi": 0,
+  "stops": [
+   {
+    "n": "Top of the Rock (mattina)",
+    "i": "🏙️",
+    "s": "terrazza ~2h",
+    "m": 144,
+    "mv": "walk",
+    "lg": 16,
+    "fixed": "09:30"
+   },
+   {
+    "n": "Vessel + Hudson Yards",
+    "i": "📸",
+    "s": "foto ~15 min",
+    "m": 70,
+    "mv": "walk",
+    "lg": 45
+   },
+   {
+    "n": "All'Antico Vinaio (schiacciata) - PRANZO",
+    "i": "🍽️",
+    "s": "pasto ~45 min",
+    "m": 54,
+    "mv": "walk",
+    "lg": 32
+   },
+   {
+    "n": "Ultimi acquisti 5th Ave + souvenir",
+    "i": "🛍️",
+    "s": "negozio ~20 min",
+    "m": 54,
+    "mv": "walk",
+    "lg": 25,
+    "opt": true
+   },
+   {
+    "n": "Nathan's Famous (Times Square)",
+    "i": "🍽️",
+    "s": "pasto ~20 min",
+    "m": 34,
+    "mv": "walk",
+    "lg": 22,
+    "opt": true
+   },
+   {
+    "n": "Rientro hotel + bagagli",
+    "i": "🚶",
+    "s": "rientro",
+    "m": 56,
+    "mv": "walk",
+    "lg": 11
+   }
+  ]
+ }
+];
+
+/* ---------- come ci si arriva ---------- */
+var MOVE = {
+  walk: { e:'🚶', t:'a piedi' },
+  bus:  { e:'🚌', t:'Big Bus' },
+  taxi: { e:'🚕', t:'taxi/Uber' }
+};
+/* colore della pastiglia zona, per giornata */
+var ZCLASS = { g1:'b3', g2:'b3', g3:'b5', g4:'b2', g5:'b1', g6:'b4' };
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function moveTag(s){
+  var m = MOVE[s.mv] || MOVE.walk;
+  return '<span class="mv ' + s.mv + '">' + m.e + ' ' + m.t + (s.lg ? ' ' + s.lg + "'" : '') + '</span>';
+}
+function heatWord(v){ return v === 'ok' ? 'tranquilla' : (v === 'warn' ? 'piena' : 'troppo piena'); }
+
+/* ---------- render delle giornate ---------- */
+(function(){
+  var box = document.getElementById('days');
+  DAYS.forEach(function(d){
+    var el = document.createElement('div');
+    el.className = 'day';
+    el.setAttribute('data-dayname', d.name + ' (' + d.zone + ')');
+
+    var h = '<div class="dh">' +
+      '<span class="dd">' + d.name.replace('·', '<span class="muted">·') + '</span></span>' +
+      '<span class="zb ' + (ZCLASS[d.id] || 'b3') + '">' + esc(d.zone) + '</span>' +
+      '<button class="editbtn" type="button">✏️ Modifica</button></div>';
+
+    h += '<div class="hours">🕗 si esce alle <b>' + d.out + '</b> &nbsp;·&nbsp; 🏨 si rientra verso le <b>' + d.end + '</b></div>';
+
+    h += '<div class="therm ' + d.verd + '">' +
+         '<div class="tt"><span class="tw">' + heatWord(d.verd) + '</span>' +
+         '<span class="tp">' + d.pct + '% piena</span></div>' +
+         '<div class="ttrack"><span class="tfill" style="width:' + Math.min(d.pct,100) + '%"></span></div></div>';
+
+    if(d.bus){
+      h += '<div class="busline">🚌 Oggi si usa il <b>Big Bus</b> — ' + d.bus +
+           (d.bus === 1 ? ' tratta' : ' tratte') + '</div>';
+    }
+
+    h += '<div class="seq">';
+    d.stops.forEach(function(s){
+      h += '<div class="it' + (s.opt ? ' int' : '') + '" data-name="' + esc(s.n) + '">' +
+           '<span class="nm">' + s.i + ' ' + esc(s.n) +
+           (s.fixed ? '<span class="fx">🔒 ' + s.fixed + '</span>' : '') + '</span>' +
+           '<span class="meta">' + moveTag(s) + '<span class="sl">' + s.s + '</span></span></div>';
     });
+    h += '</div>';
+
+    h += '<div class="edithint">👆 Tocca una tappa per proporre di toglierla — poi scrivi sotto il perché</div>';
+    h += '<textarea class="daycomment" placeholder="💬 Cosa cambieresti in questa giornata, e perché..."></textarea>';
+
+    el.innerHTML = h;
+    box.appendChild(el);
+  });
+})();
+
+/* ---------- chi sei ---------- */
+var who = '';
+var whoGroup = document.querySelector('[data-group="who"]');
+whoGroup.querySelectorAll('.chip').forEach(function(el){
+  el.addEventListener('click', function(){
+    var already = el.classList.contains('sel');
+    whoGroup.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('sel'); });
+    who = already ? '' : el.getAttribute('data-val');
+    if(!already) el.classList.add('sel');
+    updateStatus();
+  });
+});
+
+/* ---------- edit mode ---------- */
+document.querySelectorAll('.editbtn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var day = btn.closest('.day');
+    var on = day.classList.toggle('editing');
+    btn.textContent = on ? '✓ Fine' : '✏️ Modifica';
+  });
+});
+document.querySelectorAll('.it').forEach(function(el){
+  el.addEventListener('click', function(){
+    var day = el.closest('.day');
+    if(!day || !day.classList.contains('editing')) return;
+    el.classList.toggle('off');
+    updateStatus();
+  });
+});
+
+function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function updateStatus(){
+  var prop = document.querySelectorAll('.it.off').length;
+  var line = document.getElementById('statusLine');
+  if(!who){ line.textContent = 'Prima dimmi chi sei 👆'; return; }
+  line.textContent = prop ? ('Ciao ' + who + ' — ' + prop + (prop === 1 ? ' proposta' : ' proposte') + ', invia quando vuoi')
+                          : ('Ciao ' + who + ' — quando vuoi, invia');
+}
+
+/* ============================================================
+   TAG DI ORIGINE - lega la risposta alla pagina esatta che l'ha
+   prodotta e al piano che stava mostrando. Piu' pagine restano vive
+   insieme: senza questo, una risposta scritta su una pagina vecchia
+   sembra una richiesta nuova (successo il 28 lug).
+   ⚠️ Aggiornare a OGNI pubblicazione, insieme al badge di versione.
+   ============================================================ */
+var FORM = {
+  id:    'survey-gruppo',
+  ver:   'v7',
+  built: '2026-07-29',
+  plan:  'itinerario v2.2 + D51 - logistica chiusa, 6/6 giornate verificate',
+  stale: ''
+};
+
+function formTag(name){
+  var d = new Date(), p = function(n){ return (n<10?'0':'') + n; };
+  var L = ['', '———',
+    '👤 ' + (name || '(senza nome)'),
+    '📋 form: ' + FORM.id + ' ' + FORM.ver + ' · pubblicata ' + FORM.built,
+    '🗺️ piano mostrato: ' + FORM.plan,
+    '🕘 inviato: ' + p(d.getDate()) + '/' + p(d.getMonth()+1) + '/' + d.getFullYear() +
+      ' ' + p(d.getHours()) + ':' + p(d.getMinutes())];
+  if(FORM.stale) L.push('⚠️ ' + FORM.stale);
+  return L;
+}
+
+/* ---------- messaggio ---------- */
+function buildMessage(){
+  var name = who || '(?)';
+  var L = [];
+  L.push('🗽 NEW YORK — Feedback sull\'itinerario');
+  L.push('👤 Da: ' + name);
+
+  document.querySelectorAll('.day').forEach(function(day){
+    var dn = day.getAttribute('data-dayname');
+    var removed = [].slice.call(day.querySelectorAll('.it.off')).map(function(x){ return x.getAttribute('data-name'); });
+    var c = day.querySelector('.daycomment');
+    var comment = c ? c.value.trim() : '';
+    if(removed.length || comment){
+      L.push('');
+      L.push('📅 ' + dn + ':');
+      if(removed.length) L.push('   ✖ toglierei: ' + removed.join(', '));
+      if(comment) L.push('   💬 ' + comment);
+    }
   });
 
-  // heads-up chip groups (single-select each, except who)
-  const huSel = {};
-  document.querySelectorAll('.chips[data-group]').forEach(group=>{
-    const g = group.getAttribute('data-group');
-    if(g==='who') return;
-    group.querySelectorAll('.chip').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const already = el.classList.contains('sel');
-        group.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
-        huSel[g] = already ? '' : el.getAttribute('data-val');
-        if(!already) el.classList.add('sel');
-      });
-    });
-  });
+  var nw = val('newTxt'), open = val('openText');
+  if(nw){ L.push(''); L.push('✨ DA AGGIUNGERE: ' + nw); }
+  if(open){ L.push(''); L.push('💬 ALTRO: ' + open); }
+  formTag(name).forEach(function(x){ L.push(x); });
+  return L.join('\n');
+}
 
-  // booking toggles (independent)
-  document.querySelectorAll('.bktoggle').forEach(el=>{
-    el.addEventListener('click', ()=> el.classList.toggle('sel'));
-  });
-
-  // edit mode per day
-  document.querySelectorAll('.editbtn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const day = btn.closest('.day');
-      const on = day.classList.toggle('editing');
-      btn.textContent = on ? '✓ Fine' : '✏️ Modifica';
-    });
-  });
-  // tap a stop to flag removal (only in edit mode)
-  document.querySelectorAll('.it').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      const day = el.closest('.day');
-      if(!day || !day.classList.contains('editing')) return;
-      el.classList.toggle('off');
-    });
-  });
-
-  function val(id){ const el=document.getElementById(id); return el ? el.value.trim() : ''; }
-  function updateStatus(){
-    document.getElementById('statusLine').textContent = who ? ('Ciao '+who+' — quando vuoi, invia') : 'Prima dimmi chi sei 👆';
+document.getElementById('sendBtn').addEventListener('click', function(){
+  if(!who){
+    document.getElementById('statusLine').textContent = '👆 Dimmi prima chi sei';
+    window.scrollTo({ top:0, behavior:'smooth' });
+    return;
   }
-
-  function buildMessage(){
-    const name = who || '(?)';
-    const L = [];
-    L.push('🗽 NEW YORK — Feedback itinerario');
-    L.push('👤 Da: ' + name);
-    document.querySelectorAll('.day').forEach(day=>{
-      const dn = day.getAttribute('data-dayname');
-      const removed = [...day.querySelectorAll('.it.off')].map(x=>x.getAttribute('data-name'));
-      const c = day.querySelector('.daycomment');
-      const comment = c ? c.value.trim() : '';
-      if(removed.length || comment){
-        L.push('');
-        L.push('📅 ' + dn + ':');
-        if(removed.length) L.push('   ✖ togli: ' + removed.join(', '));
-        if(comment) L.push('   💬 ' + comment);
-      }
-    });
-    const HUS = [];  // tutte le domande decise (v6) -> nessun punto aperto
-    const huLines = [];
-    HUS.forEach(function(h){ if(huSel[h[0]]) huLines.push('   - ' + h[1] + ': ' + huSel[h[0]]); });
-    if(huLines.length){ L.push(''); L.push('🔎 Punti da chiarire:'); huLines.forEach(function(x){ L.push(x); }); }
-
-    const bkLines = [];
-    document.querySelectorAll('.bk').forEach(function(bk){
-      const t = bk.querySelector('.bktoggle');
-      if(t && t.classList.contains('sel')){
-        const label = bk.getAttribute('data-bk');
-        const d = bk.querySelector('.bkday'); const h = bk.querySelector('.bktime');
-        const dd = d ? d.value.trim() : ''; const hh = h ? h.value.trim() : '';
-        const det = [dd, hh].filter(Boolean).join(' ');
-        bkLines.push('   - ' + label + ': PRENOTATA' + (det ? ' (' + det + ')' : ''));
-      }
-    });
-    if(bkLines.length){ L.push(''); L.push('📋 Prenotazioni:'); bkLines.forEach(function(x){ L.push(x); }); }
-
-    const nw = val('newTxt'); const open = val('openText');
-    if(nw){ L.push(''); L.push('✨ Da aggiungere (non previsto): ' + nw); }
-    if(open){ L.push(''); L.push('💬 Altro: ' + open); }
-    formTag(name).forEach(function(x){ L.push(x); });
-    return L.join('\n');
-  }
-
-  /* ============================================================
-     TAG DI ORIGINE — lega la risposta alla pagina esatta che l'ha
-     prodotta e al piano che mostrava. Questa pagina resta aperta per
-     chi non ha ancora risposto, ma l'itinerario nel frattempo e'
-     andato avanti: senza questo tag una risposta scritta qui sembra
-     una richiesta nuova (successo il 28 lug con Shaver Hall/Eataly,
-     gia' tolti da giorni).
-     ⚠️ Aggiornare a OGNI pubblicazione, insieme al badge di versione.
-     ============================================================ */
-  var FORM = {
-    id:    'survey-gruppo',
-    ver:   'v6.1',
-    built: '2026-07-28',
-    plan:  'itinerario v2.1 + D31',
-    stale: 'questa pagina mostra il piano PRIMA del ricalcolo del 28 lug '
-         + '(D37/D38/D39): Shaver Hall, Eataly e il Guggenheim non ci sono gia\' piu\', '
-         + 'e gli orari sono cambiati. Le richieste scritte qui vanno confrontate col piano corrente.'
-  };
-
-  function formTag(name){
-    var d = new Date(), p = function(n){ return (n<10?'0':'') + n; };
-    var L = ['', '———',
-      '👤 ' + (name || '(senza nome)'),
-      '📋 form: ' + FORM.id + ' ' + FORM.ver + ' · pubblicata ' + FORM.built,
-      '🗺️ piano mostrato: ' + FORM.plan,
-      '🕘 inviato: ' + p(d.getDate()) + '/' + p(d.getMonth()+1) + '/' + d.getFullYear() +
-        ' ' + p(d.getHours()) + ':' + p(d.getMinutes())];
-    if(FORM.stale) L.push('⚠️ ' + FORM.stale);
-    return L;
-  }
-
-  document.getElementById('sendBtn').addEventListener('click', ()=>{
-    if(!who){ document.getElementById('statusLine').textContent='👆 Dimmi prima chi sei'; window.scrollTo({top:0,behavior:'smooth'}); return; }
-    const url = 'https://wa.me/?text=' + encodeURIComponent(buildMessage());
-    window.open(url, '_blank');
-  });
+  window.open('https://wa.me/?text=' + encodeURIComponent(buildMessage()), '_blank');
+});
+updateStatus();
 </script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -551,61 +974,80 @@
 <script>
 (function(){
   var Z = { g1:'#0f8a8a', g2:'#5b6cc9', g3:'#e0912f', g4:'#c9557d', g5:'#3f9d5a' };
-  var Zname = { g1:'G1 · FiDi & Porto', g2:'G2 · Downtown & Brooklyn', g3:'G3 · Midtown',
-                g4:'G4 · West Side', g5:'G5 · Central Park & Uptown' };
 
-  // [lat, lng, nome, zona, tipo]  tipo: 's'=scheletro 'i'=interesse
+  /* [lat, lon, nome, giornata, 's'=principale | 'i'=extra]
+     GENERATO da feasibility/gen_webdays.py --stops : ogni pin e' una tappa
+     vera dei dataset, con le sue coordinate. Non scrivere a mano. */
   var STOPS = [
-    [40.7009,-74.0135,'Traghetto Statua','g1','s'],
-    [40.7057,-74.0134,'Wall Street','g1','i'],
-    [40.7115,-74.0134,'9/11 Memorial','g1','s'],
-    [40.7118,-74.0108,'Oculus','g1','i'],
-    [40.7158,-73.9970,'Chinatown','g1','i'],
-    [40.7285,-73.9863,'East Village (St. Marks)','g2','i'],
-    [40.7061,-73.9969,'Ponte di Brooklyn','g2','s'],
-    [40.7033,-73.9903,'Dumbo','g2','s'],
-    [40.7027,-73.9906,'Time Out Market Dumbo','g2','i'],
-    [40.7614,-73.9639,'Roosevelt Island Tramway','g5','i'],
-    [40.7233,-74.0030,'SoHo','g2','i'],
-    [40.7163,-74.0086,'Tribeca','g2','i'],
-    [40.7580,-73.9855,'Times Square','g3','s'],
-    [40.7527,-73.9772,'Grand Central','g3','i'],
-    [40.7536,-73.9832,'Bryant Park','g3','i'],
-    [40.7595,-73.9755,'5th Avenue','g3','i'],
-    [40.7614,-73.9776,'MoMA','g3','i'],
-    [40.7526,-73.9790,'Summit One Vanderbilt','g3','s'],
-    [40.7593,-73.9793,'Top of the Rock','g3','s'],
-    [40.7585,-73.9760,'St. Patrick Cathedral','g3','i'],
-    [40.7445,-73.9880,'230 Fifth (rooftop)','g3','i'],
-    [40.7830,-73.9590,'Guggenheim','g5','i'],
-    [40.7515,-73.9819,'Shaver Hall (food hall)','g3','i'],
-    [40.7539,-74.0021,'Vessel','g4','s'],
-    [40.7480,-74.0048,'High Line','g4','s'],
-    [40.7424,-74.0061,'Chelsea Market','g4','i'],
-    [40.7419,-74.0110,'Little Island','g4','i'],
-    [40.7681,-73.9819,'Central Park (bici)','g5','s'],
-    [40.7736,-73.9566,'Upper East Side','g5','i']
+    [40.758, -73.9855, "Times Square di notte", "Giorno 1 · Gio 13", "s"],
+    [40.762, -73.9836, "Ellen's Stardust Diner (cena di benvenuto)", "Giorno 1 · Gio 13", "s"],
+    [40.7553, -73.9878, "Midtown Comics", "Giorno 1 · Gio 13", "i"],
+    [40.7585, -73.9843, "Gelato (rientro hotel)", "Giorno 1 · Gio 13", "i"],
+    [40.7527, -73.9772, "Grand Central", "Giorno 2 · Ven 14", "s"],
+    [40.7536, -73.9832, "Bryant Park", "Giorno 2 · Ven 14", "s"],
+    [40.757, -73.978, "5th Avenue (passeggiata 42nd-57th)", "Giorno 2 · Ven 14", "s"],
+    [40.7585, -73.976, "St. Patrick's Cathedral", "Giorno 2 · Ven 14", "s"],
+    [40.7565, -73.9862, "Raising Cane's (Times Sq) - PRANZO", "Giorno 2 · Ven 14", "s"],
+    [40.7614, -73.9776, "MoMA", "Giorno 2 · Ven 14", "s"],
+    [40.7589, -73.9776, "Shopping 5th Ave (Lego + NBA + Nike + Sephora)", "Giorno 2 · Ven 14", "i"],
+    [40.7529, -73.9784, "SUMMIT One Vanderbilt", "Giorno 2 · Ven 14", "s"],
+    [40.755, -73.98, "Cena + gelato (Midtown)", "Giorno 2 · Ven 14", "s"],
+    [40.7665, -73.974, "Bici a Central Park (noleggio 59th)", "Giorno 3 · Sab 15", "s"],
+    [40.774, -73.9709, "Bethesda Terrace + Bow Bridge", "Giorno 3 · Sab 15", "i"],
+    [40.7622, -73.9672, "Pausa AC + shopping (Bloomingdale's / Apple UES)", "Giorno 3 · Sab 15", "i"],
+    [40.762, -73.967, "Dylan's Candy Bar (3rd Ave & 60th)", "Giorno 3 · Sab 15", "i"],
+    [40.7625, -73.967, "Pranzo veloce (zona 59th)", "Giorno 3 · Sab 15", "s"],
+    [40.7794, -73.9632, "Met steps (Gossip Girl) + Museum Mile", "Giorno 3 · Sab 15", "s"],
+    [40.783, -73.959, "Guggenheim (solo esterno)", "Giorno 3 · Sab 15", "i"],
+    [40.7739, -73.964, "Marc Jacobs + Alo (UES)", "Giorno 3 · Sab 15", "i"],
+    [40.7614, -73.9639, "Roosevelt Island Tramway (andata/ritorno)", "Giorno 3 · Sab 15", "i"],
+    [40.7419, -73.9896, "Eataly Flatiron (200 5th Ave) - CENA", "Giorno 3 · Sab 15", "s"],
+    [40.7196, -74.0067, "Ghostbusters HQ (14 N Moore, Tribeca)", "Giorno 4 · Dom 16", "s"],
+    [40.7245, -73.999, "SoHo / Tribeca (passeggiata)", "Giorno 4 · Dom 16", "s"],
+    [40.7237, -73.9985, "Shopping SoHo (Marc Jacobs, Alo, sneakers)", "Giorno 4 · Dom 16", "i"],
+    [40.7158, -73.997, "Chinatown / Little Italy - PRANZO", "Giorno 4 · Dom 16", "s"],
+    [40.7127, -74.0043, "Ponte di Brooklyn a piedi (da City Hall)", "Giorno 4 · Dom 16", "s"],
+    [40.7033, -73.9894, "Dumbo (Washington St + Manhattan Bridge)", "Giorno 4 · Dom 16", "s"],
+    [40.7024, -73.9962, "Foto al molo (Brooklyn Bridge Park, Pier 1)", "Giorno 4 · Dom 16", "i"],
+    [40.7036, -73.9906, "Time Out Market Dumbo - CENA", "Giorno 4 · Dom 16", "s"],
+    [40.7013, -74.0134, "Traghetto Staten Island (a/r, passa la Statua)", "Giorno 5 · Lun 17", "s"],
+    [40.7056, -74.0134, "Wall St / Charging Bull", "Giorno 5 · Lun 17", "s"],
+    [40.7115, -74.0134, "9/11 Memorial", "Giorno 5 · Lun 17", "s"],
+    [40.712, -74.011, "Oculus", "Giorno 5 · Lun 17", "s"],
+    [40.7223, -73.9874, "Katz's Delicatessen (LES)", "Giorno 5 · Lun 17", "s"],
+    [40.728, -73.9974, "Sanctum Sanctorum (177A Bleecker)", "Giorno 5 · Lun 17", "s"],
+    [40.7305, -74.0027, "Joe's Pizza (Carmine St)", "Giorno 5 · Lun 17", "s"],
+    [40.7345, -74.0055, "Sex and the City (Magnolia + scalinata di Carrie)", "Giorno 5 · Lun 17", "s"],
+    [40.7424, -74.0061, "Chelsea Market - CENA", "Giorno 5 · Lun 17", "s"],
+    [40.748, -74.0048, "High Line", "Giorno 5 · Lun 17", "s"],
+    [40.7407, -74.0102, "Little Island (tramonto)", "Giorno 5 · Lun 17", "s"],
+    [40.7587, -73.9787, "Top of the Rock (mattina)", "Giorno 6 · Mar 18", "s"],
+    [40.754, -74.0021, "Vessel + Hudson Yards", "Giorno 6 · Mar 18", "s"],
+    [40.7597, -73.988, "All'Antico Vinaio (schiacciata) - PRANZO", "Giorno 6 · Mar 18", "s"],
+    [40.758, -73.9765, "Ultimi acquisti 5th Ave + souvenir", "Giorno 6 · Mar 18", "i"],
+    [40.7568, -73.986, "Nathan's Famous (Times Square)", "Giorno 6 · Mar 18", "i"]
   ];
+
   var HOTEL = [40.7585,-73.9843];
 
   var ZONES = [
-    { key:'g1', name:'G1 · FiDi & Porto', day:'Lun 17', label:[40.7095,-74.0055],
+    { key:'g1', name:'FiDi & Porto', day:'Lun 17', label:[40.7095,-74.0055],
       poly:[[40.7175,-74.0165],[40.7180,-73.9955],[40.7135,-73.9945],[40.7000,-73.9985],[40.6985,-74.0140]] },
-    { key:'g2', name:'G2 · Downtown', day:'Dom 16', label:[40.7307,-74.0066],
+    { key:'g2', name:'Downtown', day:'Dom 16', label:[40.7307,-74.0066],
       poly:[[40.7320,-74.0130],[40.7300,-73.9975],[40.7195,-73.9950],[40.7180,-73.9958],[40.7180,-74.0110]] },
     { key:'g2b', name:null, day:null, label:null,
       poly:[[40.7085,-73.9998],[40.7060,-73.9930],[40.6995,-73.9878],[40.6975,-73.9955]] },
-    { key:'g3', name:'G3 · Midtown', day:'Gio 13 · Ven 14', label:[40.7562,-73.9715],
+    { key:'g3', name:'Midtown', day:'Gio 13 · Ven 14 · Mar 18', label:[40.7562,-73.9715],
       poly:[[40.7640,-73.9910],[40.7650,-73.9670],[40.7455,-73.9705],[40.7450,-73.9925]] },
-    { key:'g4', name:'G4 · West Side', day:'Lun 17 · Mar 18', label:[40.7430,-74.0018],
+    { key:'g4', name:'West Side', day:'Lun 17 · Mar 18', label:[40.7430,-74.0018],
       poly:[[40.7590,-74.0140],[40.7565,-73.9945],[40.7395,-73.9985],[40.7405,-74.0155]] },
-    { key:'g5', name:'G5 · Central Park & Uptown', day:'Sab 15', label:[40.7780,-73.9770],
+    { key:'g5', name:'Central Park & Uptown', day:'Sab 15', label:[40.7780,-73.9770],
       poly:[[40.8020,-73.9860],[40.8020,-73.9490],[40.7640,-73.9550],[40.7650,-73.9850]] }
   ];
 
   var map = L.map('map', { scrollWheelZoom:false });
-  // Mobile: niente drag a un dito (cosi la pagina scrolla sopra la mappa);
-  // resta il pinch-zoom a due dita + i pulsanti +/- per zoomare sui pallini fitti.
+  /* Mobile: niente drag a un dito, cosi la pagina scorre sopra la mappa.
+     Il pinch a due dita e i pulsanti +/- restano. */
   if (L.Browser.mobile) { map.dragging.disable(); }
   L.control.scale({imperial:false}).addTo(map);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -627,11 +1069,11 @@
     var icon = L.divIcon({ className:'', html:'<span class="pin'+(skel?'':' i')+'"></span>',
       iconSize: skel?[15,15]:[12,12], iconAnchor: skel?[7.5,7.5]:[6,6] });
     L.marker([s[0],s[1]], { icon:icon, title:s[2] }).addTo(map)
-      .bindPopup('<b>'+s[2]+'</b><span class="zt">'+Zname[s[3]]+'</span>');
+      .bindPopup('<b>'+s[2]+'</b><span class="zt">'+s[3]+(skel?'':' · extra facoltativo')+'</span>');
   });
 
   L.marker(HOTEL, { icon:L.divIcon({className:'', html:'<div class="hotelpin">🏨</div>', iconSize:[24,24], iconAnchor:[12,12]}), zIndexOffset:1000 })
-    .bindPopup('<b>Kimpton Hotel Theta</b><span class="zt">Times Square (Midtown)</span>').addTo(map);
+    .bindPopup('<b>Kimpton Hotel Theta</b><span class="zt">Times Square — dove dormiamo</span>').addTo(map);
 
   map.fitBounds(L.latLngBounds(STOPS.map(function(s){return [s[0],s[1]];})).pad(0.04));
 })();
