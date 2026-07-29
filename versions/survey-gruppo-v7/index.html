@@ -154,7 +154,6 @@
   .mv.walk{background:#f1f0ec; color:#5c6873; border:1px solid #e0dad0}
   .mv.bus{background:#e8f1fb; color:#1f3b73; border:1px solid #cfe0f2}
   .mv.taxi{background:#fff6e2; color:#8a6d12; border:1px solid #f0dfae}
-    .mv.metro{background:#efeaf8; color:#4b3a86; border:1px solid #d9cff0}
 
   /* --- orari della giornata --- */
   .hours{font-size:.85rem; color:#4a5a68; background:#faf7f1; border:1px solid var(--line);
@@ -189,14 +188,14 @@
     <div class="flag">🗽👥</div>
     <h1>New York — il nostro giro</h1>
     <div class="sub">Questo è l'itinerario, giorno per giorno. <b>Leggetelo e ditemi la vostra</b>: siamo ancora in tempo per cambiare.</div>
-    <div class="ver">📌 versione v8 &middot; 29 lug 2026</div>
+    <div class="ver">📌 versione v7 &middot; 29 lug 2026</div>
   </div>
 </header>
 
 <div class="wrap">
 
   <div class="changelog">
-    <h3>🆕 Cosa c'è di nuovo <span class="cd">(v8 &middot; 29 lug 2026)</span></h3>
+    <h3>🆕 Cosa c'è di nuovo <span class="cd">(v7 &middot; 29 lug 2026)</span></h3>
     <ul>
       <li>📅 <b>L'itinerario è completo e verificato</b>: tutte e sei le giornate, con le tappe vere e nell'ordine giusto.</li>
       <li>🌡️ Ogni giornata ha il suo <b>termometro</b>: quanto è piena.</li>
@@ -439,11 +438,11 @@ var DAYS = [
   "id": "g3",
   "name": "Giorno 3 · Sab 15",
   "zone": "Central Park & Uptown",
-  "pct": 94,
-  "verd": "warn",
+  "pct": 86,
+  "verd": "ok",
   "out": "08:45",
   "back": "21:30",
-  "end": "20:43",
+  "end": "19:41",
   "bus": 1,
   "taxi": 2,
   "stops": [
@@ -491,20 +490,12 @@ var DAYS = [
     "lg": 8
    },
    {
-    "n": "Big Bus: giro panoramico verso il Met (Midtown + 5th Ave)",
-    "i": "🚲",
-    "s": "attivita ~55 min",
-    "m": 48,
-    "mv": "bus",
-    "lg": 29
-   },
-   {
     "n": "Met steps (Gossip Girl) + Museum Mile",
     "i": "📸",
     "s": "foto ~15 min",
-    "m": 22,
-    "mv": "walk",
-    "lg": 7
+    "m": 9,
+    "mv": "bus",
+    "lg": 29
    },
    {
     "n": "Guggenheim (solo esterno)",
@@ -645,9 +636,9 @@ var DAYS = [
   "zone": "FiDi → Village → West Side",
   "pct": 93,
   "verd": "warn",
-  "out": "08:25",
+  "out": "08:00",
   "back": "21:30",
-  "end": "20:35",
+  "end": "20:34",
   "bus": 0,
   "taxi": 2,
   "stops": [
@@ -679,7 +670,7 @@ var DAYS = [
     "n": "Oculus",
     "i": "📸",
     "s": "foto ~15 min",
-    "m": 26,
+    "m": 22,
     "mv": "walk",
     "lg": 11
    },
@@ -687,9 +678,9 @@ var DAYS = [
     "n": "Katz's Delicatessen (LES)",
     "i": "🍽️",
     "s": "pasto ~1h",
-    "m": 66,
-    "mv": "metro",
-    "lg": 26
+    "m": 90,
+    "mv": "walk",
+    "lg": 50
    },
    {
     "n": "Sanctum Sanctorum (177A Bleecker)",
@@ -753,11 +744,11 @@ var DAYS = [
   "id": "g6",
   "name": "Giorno 6 · Mar 18",
   "zone": "Midtown / West Side + partenza",
-  "pct": 81,
+  "pct": 85,
   "verd": "ok",
   "out": "08:30",
   "back": "17:30",
-  "end": "15:48",
+  "end": "16:11",
   "bus": 0,
   "taxi": 0,
   "stops": [
@@ -765,7 +756,7 @@ var DAYS = [
     "n": "Top of the Rock (mattina)",
     "i": "🏙️",
     "s": "terrazza ~2h",
-    "m": 136,
+    "m": 144,
     "mv": "walk",
     "lg": 16,
     "fixed": "09:30"
@@ -774,9 +765,9 @@ var DAYS = [
     "n": "Vessel + Hudson Yards",
     "i": "📸",
     "s": "foto ~15 min",
-    "m": 47,
-    "mv": "metro",
-    "lg": 22
+    "m": 70,
+    "mv": "walk",
+    "lg": 45
    },
    {
     "n": "All'Antico Vinaio (schiacciata) - PRANZO",
@@ -820,8 +811,7 @@ var DAYS = [
 var MOVE = {
   walk: { e:'🚶', t:'a piedi' },
   bus:  { e:'🚌', t:'Big Bus' },
-  taxi: { e:'🚕', t:'taxi/Uber' },
-  metro:{ e:'🚇', t:'metro' }
+  taxi: { e:'🚕', t:'taxi/Uber' }
 };
 /* colore della pastiglia zona, per giornata */
 var ZCLASS = { g1:'b3', g2:'b3', g3:'b5', g4:'b2', g5:'b1', g6:'b4' };
@@ -923,9 +913,9 @@ function updateStatus(){
    ============================================================ */
 var FORM = {
   id:    'survey-gruppo',
-  ver:   'v8',
+  ver:   'v7',
   built: '2026-07-29',
-  plan:  'itinerario v2.2 + D55 - giro panoramico Big Bus + 2 tratte in metro verificate',
+  plan:  'itinerario v2.2 + D51 - logistica chiusa, 6/6 giornate verificate',
   stale: ''
 };
 
@@ -1007,7 +997,6 @@ updateStatus();
     [40.7622, -73.9672, "Pausa AC + shopping (Bloomingdale's / Apple UES)", "Giorno 3 · Sab 15", "i"],
     [40.762, -73.967, "Dylan's Candy Bar (3rd Ave & 60th)", "Giorno 3 · Sab 15", "i"],
     [40.7625, -73.967, "Pranzo veloce (zona 59th)", "Giorno 3 · Sab 15", "s"],
-    [40.7794, -73.9632, "Big Bus: giro panoramico verso il Met (Midtown + 5th Ave)", "Giorno 3 · Sab 15", "s"],
     [40.7794, -73.9632, "Met steps (Gossip Girl) + Museum Mile", "Giorno 3 · Sab 15", "s"],
     [40.783, -73.959, "Guggenheim (solo esterno)", "Giorno 3 · Sab 15", "i"],
     [40.7739, -73.964, "Marc Jacobs + Alo (UES)", "Giorno 3 · Sab 15", "i"],
